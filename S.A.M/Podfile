@@ -6,7 +6,8 @@ target 'S.A.M' do
   use_frameworks!
 
   # Pods for S.A.M
-   pod 'Alamofire', '~> 5.2'
+   pod 'Alamofire'
+   pod 'AlamofireImage'
    pod 'RxSwift'
    pod 'RxCocoa'
 
