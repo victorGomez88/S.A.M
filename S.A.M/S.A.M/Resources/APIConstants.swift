@@ -17,14 +17,13 @@ class APIConstants {
     
     struct URLs {
         static let marvelDev = "https://gateway.marvel.com/v1/public/"
-        static let imagesURL = ""
     }
     
     struct Endpoints {
         
         //MARK: - Characters Endpoints
         struct Characters {
-            static let charactersList = "characters" //Fetches lists of characters.
+            static let charactersList = URLs.marvelDev + "characters" //Fetches lists of characters.
             static let character = charactersList + "/%@" //Fetches a single character by id.
             static let characterComicsList = charactersList + "/%@/comics" //Fetches lists of comics fitered by a character id.
             static let characterEventsList = charactersList + "/%@/events" //Fetches lists of events fitered by a character id.
@@ -35,7 +34,7 @@ class APIConstants {
         
         //MARK: - Comics Endpoints
         struct Comics {
-            static let comicsList = "comics" //Fetches lists of comics.
+            static let comicsList = URLs.marvelDev + "comics" //Fetches lists of comics.
             static let comic = comicsList + "/%@" //Fetches a single comic by id.
             static let comicCharactersList = comicsList + "/%@/characters" //Fetches lists of characters fitered by a comic id.
             static let comicCreatorsList = comicsList + "/%@/creators"  //Fetches lists of creators fitered by a comic id.
@@ -46,7 +45,7 @@ class APIConstants {
         
         //MARK: - Creators Endpoints
         struct Creators {
-            static let creatorsList = "creators" //Fetches lists of creators.
+            static let creatorsList = URLs.marvelDev + "creators" //Fetches lists of creators.
             static let creator = creatorsList + "/%@" //Fetches a single creator by id.
             static let creatorComicsList = creatorsList + "/%@/comics" //Fetches lists of comics fitered by a creator id.
             static let creatorEventsList = creatorsList + "/%@/events"  //Fetches lists of events fitered by a creator id.
@@ -57,7 +56,7 @@ class APIConstants {
         
         //MARK: - Events Endpoints
         struct Events {
-            static let eventsList = "events" //Fetches lists of events.
+            static let eventsList = URLs.marvelDev + "events" //Fetches lists of events.
             static let event = eventsList + "/%@" //Fetches a single event by id.
             static let eventCharactersList = eventsList + "/%@/characters" //Fetches lists of characters fitered by an event id.
             static let eventComicsList = eventsList + "/%@/comics" //Fetches lists of comics fitered by an event id.
@@ -69,7 +68,7 @@ class APIConstants {
         
         //MARK: - Series Endpoints
         struct Series {
-            static let seriesList = "series" //Fetches lists of series.
+            static let seriesList = URLs.marvelDev + "series" //Fetches lists of series.
             static let serie = seriesList + "/%@" //Fetches a single serie by id.
             static let serieCharactersList = seriesList + "/%@/characters" //Fetches lists of characters fitered by an serie id.
             static let serieComicsList = seriesList + "/%@/comics" //Fetches lists of comics fitered by an serie id.
@@ -80,7 +79,7 @@ class APIConstants {
         
         //MARK: - Stories Endpoints
         struct Stories {
-            static let storiesList = "stories" //Fetches lists of stories.
+            static let storiesList = URLs.marvelDev + "stories" //Fetches lists of stories.
             static let story = storiesList + "/%@" //Fetches a single story by id.
             static let storyCharactersList = storiesList + "/%@/characters" //Fetches lists of characters fitered by an story id.
             static let storyComicsList = storiesList + "/%@/comics" //Fetches lists of comics fitered by an story id.

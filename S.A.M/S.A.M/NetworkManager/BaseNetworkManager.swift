@@ -20,25 +20,30 @@ class BaseNetworkManager {
     /// - Parameter fail: Return data error from request (Json)
     public static func doGetRequest(params: [String:Any]?,
                                     url: String,
-                                    success succeed: (@escaping (Any) -> Void),
+                                    success succeed: (@escaping (Data) -> Void),
                                     failure fail: (@escaping (Any) -> Void)) {
     
-        AF.request(obtainFinalURL(url), method: .get, parameters:params).responseJSON { response in
+        AF.request(obtainFinalURL(url), method: .get, parameters:params).response { response in
+            guard let data = response.data else { return }
             
             print(response.request!)
             
             switch response.result {
                 
-            case .success(let value):
-                succeed(value)
+            case .success:
+                if response.response?.statusCode == 200 {
+                    print(data)
+                    succeed(data)
+                } else {
+                    fail(data)
+                }
                 break
             case .failure(let error):
+                print(error.localizedDescription)
                 fail(error)
                 break
             }
             
-            print(response.response ?? "Without Response (ERROR?)")
-            debugPrint(response.result)
         }
     }
     
@@ -82,10 +87,11 @@ class BaseNetworkManager {
         
         let timestamp = "?ts=" + dateFormatter.string(from: date)
         
-        let md5 = Insecure.MD5.hash(data: (timestamp + APIConstants.privateKey + APIConstants.publicKey).data(using: .utf8)!)
+        let md5 = Insecure.MD5.hash(data: (dateFormatter.string(from: date) + APIConstants.privateKey + APIConstants.publicKey).data(using: .utf8)!)
         let hash = "&hash=" + String(md5.description.split(separator: " ")[2])//CHANGE!!
         
         return url + timestamp + APIConstants.apiKey + hash
+        
     }
 
 }
