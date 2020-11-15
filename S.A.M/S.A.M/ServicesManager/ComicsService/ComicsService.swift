@@ -12,20 +12,18 @@ class ComicsService {
     
     //MARK: - /comics
     /// Obtain comics list
-    func getComicsList() {
-        BaseServiceManager.doGetRequest(params: nil,
+    func getComicsList(inputModel: ComicsInputModel?) {
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
                                         url: APIConstants.Endpoints.Comics.comicsList) {
             dataResponse in
             do {
                 let decoder = JSONDecoder()
-//                let comicsList = try decoder.decode(ComicsModel.self, from: dataResponse)
+                let comicsList = try decoder.decode(ComicsModel.self, from: dataResponse)
                 
-                
-//                print(comicsList)
+                print(comicsList)
             } catch let error {
                 print("Error message: " + error.localizedDescription)
             }
-            
         } failure: { (error) in
             print(error)
         }

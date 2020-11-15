@@ -13,13 +13,13 @@ struct CharactersModel: Codable {
     let code: Int
     let status, copyright, attributionText, attributionHTML: String
     let etag: String
-    let data: DataClass
+    let data: CharactersDataClass
 }
 
 // MARK: - DataClass
-struct DataClass: Codable {
+struct CharactersDataClass: Codable {
     let offset, limit, total, count: Int
-    let characterList: [Character]
+    let characterList: [CharactersResult]
     
     enum CodingKeys: String, CodingKey {
         case offset, limit, total, count
@@ -28,7 +28,7 @@ struct DataClass: Codable {
 }
 
 // MARK: - Result
-struct Character: Codable {
+struct CharactersResult: Codable {
     let id: Int
     let name, resultDescription: String
     let modified: String

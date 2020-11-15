@@ -20,7 +20,15 @@ class CharactersInputModel {
     var limit: Int
     var offset: Int
     
-    init(name: String? = "", nameStartsWith: String? = "", modifiedSince: String? = "", comics: [Int]? = [], events: [Int]? = [], stories:[Int]? = [], orderBy: String? = "", limit: Int? = 20, offset: Int? = 0) {
+    init(name: String? = "",
+         nameStartsWith: String? = "",
+         modifiedSince: String? = "",
+         comics: [Int]? = [],
+         events: [Int]? = [],
+         stories:[Int]? = [],
+         orderBy: String? = "",
+         limit: Int? = 20,
+         offset: Int? = 0) {
         
         self.name = name!
         self.nameStartsWith = nameStartsWith!
