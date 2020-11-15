@@ -1,5 +1,5 @@
 //
-//  CharactersInputModel.swift
+//  StoriesInputModel.swift
 //  S.A.M
 //
 //  Created by Victor Gomez on 15/11/2020.
@@ -8,37 +8,34 @@
 
 import Foundation
 
-class CharactersInputModel {
+class StoriesInputModel {
     
-    var name : String
-    var nameStartsWith: String
     var modifiedSince: String
     var comics: [Int]
-    var events: [Int]
     var series: [Int]
-    var stories: [Int]
+    var events: [Int]
+    var creators: [Int]
+    var characters: [Int]
     var orderBy: String
     var limit: Int
     var offset: Int
     
-    init(name: String? = "",
-         nameStartsWith: String? = "",
-         modifiedSince: String? = "",
+    init(modifiedSince: String? = "",
          comics: [Int]? = [],
-         events: [Int]? = [],
-         series: [Int]? = [],
-         stories:[Int]? = [],
+         series:[Int]? = [],
+         events:[Int]? = [],
+         creators: [Int]? = [],
+         characters: [Int]? = [],
          orderBy: String? = "",
          limit: Int? = 20,
          offset: Int? = 0) {
         
-        self.name = name!
-        self.nameStartsWith = nameStartsWith!
         self.modifiedSince = modifiedSince!
         self.comics = comics!
-        self.events = events!
         self.series = series!
-        self.stories = stories!
+        self.events = events!
+        self.creators = creators!
+        self.characters = characters!
         self.orderBy = orderBy!
         self.limit = limit!
         self.offset = offset!
@@ -48,11 +45,7 @@ class CharactersInputModel {
         
         var params: [String: Any] = [:]
         
-        if !name.isEmpty {
-            params.updateValue(name, forKey: "name")
-        } else if !nameStartsWith.isEmpty {
-            params.updateValue(nameStartsWith, forKey: "nameStartsWith")
-        } else if modifiedSince.isEmpty{
+        if modifiedSince.isEmpty{
             
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -62,12 +55,14 @@ class CharactersInputModel {
             params.updateValue(date, forKey: "modifiedSince")
         } else if comics.count > 0{
             params.updateValue(comics, forKey: "comics")
-        } else if events.count > 0{
-            params.updateValue(events, forKey: "events")
         } else if series.count > 0{
             params.updateValue(series, forKey: "series")
-        } else if stories.count > 0{
-            params.updateValue(stories, forKey: "stories")
+        } else if events.count > 0{
+            params.updateValue(events, forKey: "events")
+        } else if creators.count > 0{
+            params.updateValue(creators, forKey: "creators")
+        } else if characters.count > 0{
+            params.updateValue(characters, forKey: "characters")
         } else if !orderBy.isEmpty{
             params.updateValue(orderBy, forKey: "orderBy")
         }

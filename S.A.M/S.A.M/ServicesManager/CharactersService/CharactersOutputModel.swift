@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - CharactersModel
+// MARK: - CharactersOutputModel
 struct CharactersOutputModel: Codable {
     let code: Int
     let status, copyright, attributionText, attributionHTML: String
@@ -16,7 +16,7 @@ struct CharactersOutputModel: Codable {
     let data: CharactersDataClass
 }
 
-// MARK: - DataClass
+// MARK: - CharactersDataClass
 struct CharactersDataClass: Codable {
     let offset, limit, total, count: Int
     let characterList: [CharactersResult]
@@ -27,7 +27,7 @@ struct CharactersDataClass: Codable {
     }
 }
 
-// MARK: - Result
+// MARK: - CharactersResult
 struct CharactersResult: Codable {
     let id: Int
     let name, resultDescription: String
@@ -47,67 +47,16 @@ struct CharactersResult: Codable {
     }
 }
 
-// MARK: - Comics
-struct Comics: Codable {
+// MARK: - Characters
+struct Characters: Codable {
     let available: Int
     let collectionURI: String
-    let items: [ComicsItem]
+    let items: [CharactersItem]
     let returned: Int
 }
 
-// MARK: - ComicsItem
-struct ComicsItem: Codable {
-    let resourceURI: String
-    let name: String
-}
-
-// MARK: - Series
-struct Series: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [SeriesItem]
-    let returned: Int
-}
-
-// MARK: - SeriesItem
-struct SeriesItem: Codable {
-    let resourceURI: String
-    let name: String
-}
-
-// MARK: - Stories
-struct Stories: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [StoriesItem]
-    let returned: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case available, collectionURI, items, returned
-    }
-}
-
-// MARK: - StoriesItem
-struct StoriesItem: Codable {
-    let resourceURI: String
-    let name: String
-    let type: String
-    
-    enum CodingKeys: String, CodingKey {
-        case resourceURI, name, type
-    }
-}
-
-// MARK: - Events
-struct Events: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [EventsItem]
-    let returned: Int
-}
-
-// MARK: - SeriesItem
-struct EventsItem: Codable {
+// MARK: - CharactersItem
+struct CharactersItem: Codable {
     let resourceURI: String
     let name: String
 }

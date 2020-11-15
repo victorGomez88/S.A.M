@@ -58,9 +58,9 @@ class CharacterService {
     //MARK: - /characters/{characterId}/comics
     /// Obtain comics from a character
     /// - Parameter characterID: desired character id to obtain his/her comics
-    func getCharacterComicsList(with characterID: Int) {
+    func getCharacterComicsList(with characterID: Int, inputModel: ComicsInputModel?) {
         
-        BaseServiceManager.doGetRequest(params: nil,
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
                                         url: String(format:APIConstants.Endpoints.Characters.characterComicsList, String(characterID)))
         { success in
             
@@ -73,9 +73,9 @@ class CharacterService {
     //MARK: - /characters/{characterId}/events
     /// Obtain events from a character
     /// - Parameter characterID: desired character id to obtain his/her events
-    func getCharacterEventsList(with characterID: Int) {
+    func getCharacterEventsList(with characterID: Int, inputModel: EventsInputModel?) {
         
-        BaseServiceManager.doGetRequest(params: nil,
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
                                         url: String(format:APIConstants.Endpoints.Characters.characterEventsList, String(characterID)))
         { success in
             
@@ -88,9 +88,9 @@ class CharacterService {
     //MARK: - /characters/{characterId}/series
     /// Obtain series from a character
     /// - Parameter characterID: desired character id to obtain his/her series
-    func getCharacterSeriesList(with characterID: Int) {
+    func getCharacterSeriesList(with characterID: Int, inputModel: SeriesInputModel?) {
         
-        BaseServiceManager.doGetRequest(params: nil,
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
                                         url: String(format:APIConstants.Endpoints.Characters.characterSeriesList,String(characterID)))
         { success in
             
@@ -103,9 +103,9 @@ class CharacterService {
     //MARK: - /characters/{characterId}/stories
     /// Obtain stories from a character
     /// - Parameter characterID: desired character id to obtain his/her stories
-    func getCharacterStoriesList(with characterID: Int) {
+    func getCharacterStoriesList(with characterID: Int, inputModel: StoriesInputModel?) {
         
-        BaseServiceManager.doGetRequest(params: nil,
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
                                         url: String(format:APIConstants.Endpoints.Characters.characterStoriesList, String(characterID)))
         { success in
             

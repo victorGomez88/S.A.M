@@ -33,39 +33,69 @@ class ComicsService {
     /// Obtain specific comic
     /// - Parameter comicID: desired comic id
     func getComic(with comicID: Int) {
-        
+        BaseServiceManager.doGetRequest(params: nil,
+                                        url: String(format:APIConstants.Endpoints.Comics.comic, String(comicID)))
+        { success in
+            
+        } failure: { (error) in
+            print(error)
+        }
     }
     
     
     //MARK: - /comics/{comicId}/characters
     /// Obtain characters of specific comic
     /// - Parameter comicID: desired comic id to obtain its characters
-    func getComicCharactersList(with comicID: Int) {
-        
+    func getComicCharactersList(with comicID: Int, inputModel: CharactersInputModel?) {
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
+                                        url: String(format:APIConstants.Endpoints.Comics.comicCharactersList, String(comicID)))
+        { success in
+            
+        } failure: { (error) in
+            print(error)
+        }
     }
     
     
     //MARK: - /comics/{comicId}/creators
     /// Obtain creators of specific comic
     /// - Parameter comicID: desired comic id to obtain its creators
-    func getComicCreatorsList(with comicID: Int) {
-        
+    func getComicCreatorsList(with comicID: Int, inputModel: CreatorsInputModel?) {
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
+                                        url: String(format:APIConstants.Endpoints.Comics.comicCreatorsList, String(comicID)))
+        { success in
+            
+        } failure: { (error) in
+            print(error)
+        }
     }
     
     
     //MARK: - /comics/{comicId}/events
     /// Obtain events of specific comic
     /// - Parameter comicID: desired comic id to obtain its events
-    func getComicEventsList(with comicID: Int) {
-        
+    func getComicEventsList(with comicID: Int, inputModel: EventsInputModel?) {
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
+                                        url: String(format:APIConstants.Endpoints.Comics.comicEventsList, String(comicID)))
+        { success in
+            
+        } failure: { (error) in
+            print(error)
+        }
     }
     
     
     //MARK: - /comics/{comicId}/stories
     /// Obtain stories of specific comic
     /// - Parameter comicID: desired comic id to obtain its stories
-    func getComicStoriesList(with comicID: Int) {
-        
+    func getComicStoriesList(with comicID: Int, inputModel: StoriesInputModel?) {
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
+                                        url: String(format:APIConstants.Endpoints.Comics.comicStoriesList, String(comicID)))
+        { success in
+            
+        } failure: { (error) in
+            print(error)
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 //
-//  CharactersInputModel.swift
+//  EventsInputModel.swift
 //  S.A.M
 //
 //  Created by Victor Gomez on 15/11/2020.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-class CharactersInputModel {
-    
+class EventsInputModel {
     var name : String
-    var nameStartsWith: String
+    var nameStartsWith : String
     var modifiedSince: String
-    var comics: [Int]
-    var events: [Int]
+    var creators: [Int]
+    var characters: [Int]
     var series: [Int]
+    var comics: [Int]
     var stories: [Int]
     var orderBy: String
     var limit: Int
@@ -24,9 +24,10 @@ class CharactersInputModel {
     init(name: String? = "",
          nameStartsWith: String? = "",
          modifiedSince: String? = "",
-         comics: [Int]? = [],
-         events: [Int]? = [],
+         creators: [Int]? = [],
+         characters: [Int]? = [],
          series: [Int]? = [],
+         comics: [Int]? = [],
          stories:[Int]? = [],
          orderBy: String? = "",
          limit: Int? = 20,
@@ -35,9 +36,10 @@ class CharactersInputModel {
         self.name = name!
         self.nameStartsWith = nameStartsWith!
         self.modifiedSince = modifiedSince!
-        self.comics = comics!
-        self.events = events!
+        self.creators = creators!
+        self.characters = characters!
         self.series = series!
+        self.comics = comics!
         self.stories = stories!
         self.orderBy = orderBy!
         self.limit = limit!
@@ -60,10 +62,12 @@ class CharactersInputModel {
             let date = dateFormatter.date(from:modifiedSince)!
 
             params.updateValue(date, forKey: "modifiedSince")
+        } else if creators.count > 0{
+            params.updateValue(creators, forKey: "creators")
+        } else if characters.count > 0{
+            params.updateValue(characters, forKey: "characters")
         } else if comics.count > 0{
             params.updateValue(comics, forKey: "comics")
-        } else if events.count > 0{
-            params.updateValue(events, forKey: "events")
         } else if series.count > 0{
             params.updateValue(series, forKey: "series")
         } else if stories.count > 0{

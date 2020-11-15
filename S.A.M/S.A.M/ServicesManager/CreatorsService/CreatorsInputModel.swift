@@ -1,5 +1,5 @@
 //
-//  CharactersInputModel.swift
+//  CreatorsInputModel.swift
 //  S.A.M
 //
 //  Created by Victor Gomez on 15/11/2020.
@@ -8,10 +8,15 @@
 
 import Foundation
 
-class CharactersInputModel {
-    
-    var name : String
-    var nameStartsWith: String
+class CreatorsInputModel {
+    var firstName : String
+    var middleName: String
+    var lastName : String
+    var suffix: String
+    var nameStartsWith : String
+    var firstNameStartsWith: String
+    var middleNameStartsWith : String
+    var lastNameStartsWith : String
     var modifiedSince: String
     var comics: [Int]
     var events: [Int]
@@ -21,8 +26,14 @@ class CharactersInputModel {
     var limit: Int
     var offset: Int
     
-    init(name: String? = "",
+    init(firstName: String? = "",
+         middleName: String? = "",
+         lastName: String? = "",
+         suffix: String? = "",
          nameStartsWith: String? = "",
+         firstNameStartsWith: String? = "",
+         middleNameStartsWith: String? = "",
+         lastNameStartsWith: String? = "",
          modifiedSince: String? = "",
          comics: [Int]? = [],
          events: [Int]? = [],
@@ -32,8 +43,14 @@ class CharactersInputModel {
          limit: Int? = 20,
          offset: Int? = 0) {
         
-        self.name = name!
+        self.firstName = firstName!
+        self.middleName = middleName!
+        self.lastName = lastName!
+        self.suffix = suffix!
         self.nameStartsWith = nameStartsWith!
+        self.firstNameStartsWith = firstNameStartsWith!
+        self.middleNameStartsWith = middleNameStartsWith!
+        self.lastNameStartsWith = lastNameStartsWith!
         self.modifiedSince = modifiedSince!
         self.comics = comics!
         self.events = events!
@@ -48,10 +65,22 @@ class CharactersInputModel {
         
         var params: [String: Any] = [:]
         
-        if !name.isEmpty {
-            params.updateValue(name, forKey: "name")
+        if !firstName.isEmpty {
+            params.updateValue(firstName, forKey: "firstName")
+        } else if !middleName.isEmpty {
+            params.updateValue(middleName, forKey: "middleName")
+        } else if !lastName.isEmpty {
+            params.updateValue(lastName, forKey: "lastName")
+        } else if !suffix.isEmpty {
+            params.updateValue(suffix, forKey: "suffix")
         } else if !nameStartsWith.isEmpty {
             params.updateValue(nameStartsWith, forKey: "nameStartsWith")
+        } else if !firstNameStartsWith.isEmpty {
+            params.updateValue(firstNameStartsWith, forKey: "firstNameStartsWith")
+        } else if !middleNameStartsWith.isEmpty {
+            params.updateValue(middleNameStartsWith, forKey: "middleNameStartsWith")
+        } else if !lastNameStartsWith.isEmpty {
+            params.updateValue(lastNameStartsWith, forKey: "lastNameStartsWith")
         } else if modifiedSince.isEmpty{
             
             let dateFormatter = DateFormatter()

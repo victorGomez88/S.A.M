@@ -7,7 +7,7 @@
 //
 
 import Foundation
-// MARK: - ComicsModel
+// MARK: - ComicsOutputModel
 struct ComicsOutputModel: Codable {
     let code: Int
     let status, copyright, attributionText, attributionHTML: String
@@ -15,13 +15,13 @@ struct ComicsOutputModel: Codable {
     let data: ComicsDataClass
 }
 
-// MARK: - DataClass
+// MARK: - ComicsDataClass
 struct ComicsDataClass: Codable {
     let offset, limit, total, count: Int
     let results: [ComicsResult]
 }
 
-// MARK: - Result
+// MARK: - ComicsResult
 struct ComicsResult: Codable {
     let id, digitalId: Int
     let title: String
@@ -57,33 +57,20 @@ struct ComicsResult: Codable {
     }
 }
 
-// MARK: - Characters
-struct Characters: Codable {
+// MARK: - Comics
+struct Comics: Codable {
     let available: Int
     let collectionURI: String
-    let items: [CharactersItem]
+    let items: [ComicsItem]
     let returned: Int
 }
 
-// MARK: - CreatorsItem
-struct CharactersItem: Codable {
+// MARK: - ComicsItem
+struct ComicsItem: Codable {
     let resourceURI: String
     let name: String
 }
 
-// MARK: - Creators
-struct Creators: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [CreatorsItem]
-    let returned: Int
-}
-
-// MARK: - CreatorsItem
-struct CreatorsItem: Codable {
-    let resourceURI: String
-    let name, role: String
-}
 
 // MARK: - DateElement
 struct DateElement: Codable {
