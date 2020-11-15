@@ -18,7 +18,7 @@ class CharacterService {
         BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(), url: APIConstants.Endpoints.Characters.charactersList) { dataResponse in
             do {
                 let decoder = JSONDecoder()
-                let characterList = try decoder.decode(CharactersModel.self, from: dataResponse)
+                let characterList = try decoder.decode(CharactersOutputModel.self, from: dataResponse)
                 let listCharacters = characterList.data.characterList
                 
                 print(listCharacters)
@@ -42,7 +42,7 @@ class CharacterService {
             dataResponse in
             do {
                 let decoder = JSONDecoder()
-                let characterList = try decoder.decode(CharactersModel.self, from: dataResponse)
+                let characterList = try decoder.decode(CharactersOutputModel.self, from: dataResponse)
                 let character = characterList.data.characterList[0]
                 
                 print(character)

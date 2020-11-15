@@ -10,7 +10,7 @@
 		33B8F180FB443B7B351F9468 /* Pods_S_A_MTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4313C1B350EF64B3076AEDBE /* Pods_S_A_MTests.framework */; };
 		4E684D3C2560467800290D67 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684D3B2560467800290D67 /* APIConstants.swift */; };
 		4E684D4225612AAD00290D67 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684D4125612AAD00290D67 /* CharacterService.swift */; };
-		4E684D4A25612AEB00290D67 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684D4925612AEB00290D67 /* CharactersModel.swift */; };
+		4E684D4A25612AEB00290D67 /* CharactersOutputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684D4925612AEB00290D67 /* CharactersOutputModel.swift */; };
 		4E684D692561551700290D67 /* LoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684D672561551700290D67 /* LoaderViewController.swift */; };
 		4E684D6A2561551700290D67 /* LoaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E684D682561551700290D67 /* LoaderViewController.xib */; };
 		4E684D82256173C800290D67 /* ComicsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684D81256173C800290D67 /* ComicsService.swift */; };
@@ -18,7 +18,7 @@
 		4E684D90256173E900290D67 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684D8F256173E900290D67 /* EventsService.swift */; };
 		4E684D98256173F400290D67 /* SeriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684D97256173F400290D67 /* SeriesService.swift */; };
 		4E684DA02561741000290D67 /* StoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684D9F2561741000290D67 /* StoriesService.swift */; };
-		4E684DA5256176F600290D67 /* ComicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684DA4256176F600290D67 /* ComicsModel.swift */; };
+		4E684DA5256176F600290D67 /* ComicsOutputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684DA4256176F600290D67 /* ComicsOutputModel.swift */; };
 		4E684DAD256177CF00290D67 /* CharactersInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E684DAC256177CF00290D67 /* CharactersInputModel.swift */; };
 		4E9B544225618E8800A194FF /* ComicsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B544125618E8800A194FF /* ComicsInputModel.swift */; };
 		4EEEC36A255FE8CF0083ABA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEC369255FE8CF0083ABA3 /* AppDelegate.swift */; };
@@ -58,7 +58,7 @@
 		4313C1B350EF64B3076AEDBE /* Pods_S_A_MTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_S_A_MTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E684D3B2560467800290D67 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		4E684D4125612AAD00290D67 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
-		4E684D4925612AEB00290D67 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
+		4E684D4925612AEB00290D67 /* CharactersOutputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersOutputModel.swift; sourceTree = "<group>"; };
 		4E684D672561551700290D67 /* LoaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderViewController.swift; sourceTree = "<group>"; };
 		4E684D682561551700290D67 /* LoaderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderViewController.xib; sourceTree = "<group>"; };
 		4E684D81256173C800290D67 /* ComicsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsService.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		4E684D8F256173E900290D67 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
 		4E684D97256173F400290D67 /* SeriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesService.swift; sourceTree = "<group>"; };
 		4E684D9F2561741000290D67 /* StoriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesService.swift; sourceTree = "<group>"; };
-		4E684DA4256176F600290D67 /* ComicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModel.swift; sourceTree = "<group>"; };
+		4E684DA4256176F600290D67 /* ComicsOutputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsOutputModel.swift; sourceTree = "<group>"; };
 		4E684DAC256177CF00290D67 /* CharactersInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersInputModel.swift; sourceTree = "<group>"; };
 		4E9B544125618E8800A194FF /* ComicsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInputModel.swift; sourceTree = "<group>"; };
 		4EEEC366255FE8CF0083ABA3 /* S.A.M.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = S.A.M.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				4E684D4125612AAD00290D67 /* CharacterService.swift */,
-				4E684D4925612AEB00290D67 /* CharactersModel.swift */,
+				4E684D4925612AEB00290D67 /* CharactersOutputModel.swift */,
 				4E684DAC256177CF00290D67 /* CharactersInputModel.swift */,
 			);
 			path = CharactersService;
@@ -151,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				4E684D81256173C800290D67 /* ComicsService.swift */,
-				4E684DA4256176F600290D67 /* ComicsModel.swift */,
+				4E684DA4256176F600290D67 /* ComicsOutputModel.swift */,
 				4E9B544125618E8800A194FF /* ComicsInputModel.swift */,
 			);
 			path = ComicsService;
@@ -534,8 +534,8 @@
 				4E684D98256173F400290D67 /* SeriesService.swift in Sources */,
 				4E684D4225612AAD00290D67 /* CharacterService.swift in Sources */,
 				4EEEC36C255FE8CF0083ABA3 /* SceneDelegate.swift in Sources */,
-				4E684D4A25612AEB00290D67 /* CharactersModel.swift in Sources */,
-				4E684DA5256176F600290D67 /* ComicsModel.swift in Sources */,
+				4E684D4A25612AEB00290D67 /* CharactersOutputModel.swift in Sources */,
+				4E684DA5256176F600290D67 /* ComicsOutputModel.swift in Sources */,
 				4E684D8A256173D800290D67 /* CreatorsService.swift in Sources */,
 				4EEEC39B25602AF50083ABA3 /* BaseServiceManager.swift in Sources */,
 			);

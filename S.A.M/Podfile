@@ -10,6 +10,7 @@ target 'S.A.M' do
    pod 'AlamofireImage'
    pod 'RxSwift'
    pod 'RxCocoa'
+   pod 'CryptoSwift', '~> 1.3.4'
 
   target 'S.A.MTests' do
     inherit! :search_paths

@@ -18,7 +18,7 @@ class ComicsService {
             dataResponse in
             do {
                 let decoder = JSONDecoder()
-                let comicsList = try decoder.decode(ComicsModel.self, from: dataResponse)
+                let comicsList = try decoder.decode(ComicsOutputModel.self, from: dataResponse)
                 
                 print(comicsList)
             } catch let error {

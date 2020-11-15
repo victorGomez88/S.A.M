@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 import AlamofireImage
-import CryptoKit
+import CryptoSwift
 
 class BaseServiceManager {
     
@@ -94,8 +94,7 @@ class BaseServiceManager {
         dateFormatter.dateFormat = "yyyyMMddHmss"
         let timestamp = dateFormatter.string(from: date)
         
-        let md5 = Insecure.MD5.hash(data: (timestamp + APIConstants.privateKey + APIConstants.publicKey).data(using: .utf8)!)
-        let hash = String(md5.description.split(separator: " ")[2])//CHANGE!!
+        let hash = (timestamp + APIConstants.privateKey + APIConstants.publicKey).md5()
         
         return ["ts": timestamp,
                 "hash": hash,
