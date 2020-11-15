@@ -11,7 +11,7 @@ import Alamofire
 import AlamofireImage
 import CryptoKit
 
-class BaseNetworkManager {
+class BaseServiceManager {
     
     /// Base GET request method
     /// - Parameter params: Params necessary in the request (optional)
@@ -22,8 +22,16 @@ class BaseNetworkManager {
                                     url: String,
                                     success succeed: (@escaping (Data) -> Void),
                                     failure fail: (@escaping (Any) -> Void)) {
-    
-        AF.request(obtainFinalURL(url), method: .get, parameters:params).response { response in
+        
+        var finalParams: [String: Any] = [:]
+        
+        if let params = params {
+            finalParams.merge(params){(current, _) in current}
+        }
+        
+        finalParams.merge(obtainSecurityParams()){(current, _) in current}
+        
+        AF.request(url, method: .get, parameters:finalParams).response { response in
             guard let data = response.data else { return }
             
             print(response.request!)
@@ -80,18 +88,18 @@ class BaseNetworkManager {
     /// Creates the url with security params (timestamp, apikey and hash -> md5(ts+publicKey+privateKey)
     /// - Parameter url: basic url without security params
     /// - Returns: Complete url with security params
-    private static func obtainFinalURL(_ url: String) -> String {
+    private static func obtainSecurityParams() -> [String:Any] {
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHmss"
+        let timestamp = dateFormatter.string(from: date)
         
-        let timestamp = "?ts=" + dateFormatter.string(from: date)
+        let md5 = Insecure.MD5.hash(data: (timestamp + APIConstants.privateKey + APIConstants.publicKey).data(using: .utf8)!)
+        let hash = String(md5.description.split(separator: " ")[2])//CHANGE!!
         
-        let md5 = Insecure.MD5.hash(data: (dateFormatter.string(from: date) + APIConstants.privateKey + APIConstants.publicKey).data(using: .utf8)!)
-        let hash = "&hash=" + String(md5.description.split(separator: " ")[2])//CHANGE!!
-        
-        return url + timestamp + APIConstants.apiKey + hash
-        
+        return ["ts": timestamp,
+                "hash": hash,
+                "apikey": APIConstants.apiKey]
     }
 
 }

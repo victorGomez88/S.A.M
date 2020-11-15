@@ -11,9 +11,11 @@ import RxSwift
 
 class CharacterService {
     
-    func getCharactersList() {
+    //MARK: - /characters
+    /// Obtain list of characters
+    func getCharactersList(inputModel: CharactersInputModel?) {
         
-        BaseNetworkManager.doGetRequest(params: nil, url: APIConstants.Endpoints.Characters.charactersList) { dataResponse in
+        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(), url: APIConstants.Endpoints.Characters.charactersList) { dataResponse in
             do {
                 let decoder = JSONDecoder()
                 let characterList = try decoder.decode(CharactersModel.self, from: dataResponse)
@@ -29,9 +31,13 @@ class CharacterService {
         }
     }
     
+    
+    //MARK: - /characters/{characterId}
+    /// Obtain specific character
+    /// - Parameter characterID: desired character id
     func getCharacter(with characterID: Int) {
         
-        BaseNetworkManager.doGetRequest(params: nil,
+        BaseServiceManager.doGetRequest(params: nil,
                                         url: String(format:APIConstants.Endpoints.Characters.character, String(characterID))) {
             dataResponse in
             do {
@@ -49,9 +55,12 @@ class CharacterService {
         }
     }
     
+    //MARK: - /characters/{characterId}/comics
+    /// Obtain comics from a character
+    /// - Parameter characterID: desired character id to obtain his/her comics
     func getCharacterComicsList(with characterID: Int) {
         
-        BaseNetworkManager.doGetRequest(params: nil,
+        BaseServiceManager.doGetRequest(params: nil,
                                         url: String(format:APIConstants.Endpoints.Characters.characterComicsList, String(characterID)))
         { success in
             
@@ -60,9 +69,13 @@ class CharacterService {
         }
     }
     
+    
+    //MARK: - /characters/{characterId}/events
+    /// Obtain events from a character
+    /// - Parameter characterID: desired character id to obtain his/her events
     func getCharacterEventsList(with characterID: Int) {
         
-        BaseNetworkManager.doGetRequest(params: nil,
+        BaseServiceManager.doGetRequest(params: nil,
                                         url: String(format:APIConstants.Endpoints.Characters.characterEventsList, String(characterID)))
         { success in
             
@@ -71,9 +84,13 @@ class CharacterService {
         }
     }
     
+    
+    //MARK: - /characters/{characterId}/series
+    /// Obtain series from a character
+    /// - Parameter characterID: desired character id to obtain his/her series
     func getCharacterSeriesList(with characterID: Int) {
         
-        BaseNetworkManager.doGetRequest(params: nil,
+        BaseServiceManager.doGetRequest(params: nil,
                                         url: String(format:APIConstants.Endpoints.Characters.characterSeriesList,String(characterID)))
         { success in
             
@@ -82,9 +99,13 @@ class CharacterService {
         }
     }
     
+    
+    //MARK: - /characters/{characterId}/stories
+    /// Obtain stories from a character
+    /// - Parameter characterID: desired character id to obtain his/her stories
     func getCharacterStoriesList(with characterID: Int) {
         
-        BaseNetworkManager.doGetRequest(params: nil,
+        BaseServiceManager.doGetRequest(params: nil,
                                         url: String(format:APIConstants.Endpoints.Characters.characterStoriesList, String(characterID)))
         { success in
             

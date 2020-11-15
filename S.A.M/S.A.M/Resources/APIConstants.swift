@@ -13,7 +13,7 @@ class APIConstants {
     static let publicKey = "8c67eb812968c804892886a11a6ce07c"
     static let privateKey = "5458c4e6a9cc00c6b0b89eef0a09930cc2d01db8"
     
-    static let apiKey = "&apikey=" + publicKey
+    static let apiKey = publicKey
     
     struct URLs {
         static let marvelDev = "https://gateway.marvel.com/v1/public/"
