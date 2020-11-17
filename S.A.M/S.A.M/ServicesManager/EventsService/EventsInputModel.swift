@@ -59,9 +59,9 @@ class EventsInputModel {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            let date = dateFormatter.date(from:modifiedSince)!
-
-            params.updateValue(date, forKey: "modifiedSince")
+            if let date = dateFormatter.date(from:modifiedSince) {
+                params.updateValue(date, forKey: "modifiedSince")
+            }
         } else if creators.count > 0{
             params.updateValue(creators, forKey: "creators")
         } else if characters.count > 0{

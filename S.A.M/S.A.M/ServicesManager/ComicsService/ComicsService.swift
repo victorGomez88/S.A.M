@@ -7,25 +7,54 @@
 //
 
 import Foundation
+import RxSwift
 
 class ComicsService {
     
+    static let sharedInstance = ComicsService()
+    
+    public var comicsList: [ComicsResult] = []
+    private var comicModel : ComicsOutputModel?
+    
     //MARK: - /comics
     /// Obtain comics list
-    func getComicsList(inputModel: ComicsInputModel?) {
-        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
-                                        url: APIConstants.Endpoints.Comics.comicsList) {
-            dataResponse in
-            do {
-                let decoder = JSONDecoder()
-                let comicsList = try decoder.decode(ComicsOutputModel.self, from: dataResponse)
+    func getComicsList(inputModel: ComicsInputModel?, moreData: Bool) -> Observable<ComicsOutputModel> {
+        
+        return Observable.create { observer in
+            
+            if self.comicsList.count > 0 && !moreData{
+                if let comicModel = self.comicModel {
+                    observer.onNext(comicModel)
+                } else {
+                    print("Error with character model")
+                }
+            } else {
                 
-                print(comicsList)
-            } catch let error {
-                print("Error message: " + error.localizedDescription)
+                BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
+                                                url: APIConstants.Endpoints.Comics.comicsList) {
+                    dataResponse in
+                    do {
+                        let decoder = JSONDecoder()
+                        self.comicModel = try decoder.decode(ComicsOutputModel.self, from: dataResponse)
+                        
+                        guard let comicModel = self.comicModel else { return }
+                        self.comicsList.append(contentsOf: comicModel.data.comicsList)
+                        
+                        observer.onNext(comicModel)
+                        
+                    } catch let error {
+                        observer.onError(error)
+                        print("Error message: " + error.localizedDescription)
+                    }
+                    
+                    observer.onCompleted()
+                } failure: { (error) in
+                    print(error)
+                }
             }
-        } failure: { (error) in
-            print(error)
+            return Disposables.create {
+                
+            }
         }
     }
     
@@ -97,5 +126,5 @@ class ComicsService {
             print(error)
         }
     }
-
+    
 }

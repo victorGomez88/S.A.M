@@ -10,6 +10,15 @@ import Foundation
 
 class APIConstants {
     
+    enum ItemsType {
+        case Characters
+        case Comics
+        case Creators
+        case Events
+        case Series
+        case Stories
+    }
+    
     static let publicKey = "8c67eb812968c804892886a11a6ce07c"
     static let privateKey = "5458c4e6a9cc00c6b0b89eef0a09930cc2d01db8"
     

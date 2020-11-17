@@ -18,7 +18,12 @@ struct ComicsOutputModel: Codable {
 // MARK: - ComicsDataClass
 struct ComicsDataClass: Codable {
     let offset, limit, total, count: Int
-    let results: [ComicsResult]
+    let comicsList: [ComicsResult]
+    
+    enum CodingKeys: String, CodingKey {
+        case offset, limit, total, count
+        case comicsList = "results"
+    }
 }
 
 // MARK: - ComicsResult

@@ -43,6 +43,7 @@ class BaseServiceManager {
                     print(data)
                     succeed(data)
                 } else {
+                    print(response.result)
                     fail(data)
                 }
                 break

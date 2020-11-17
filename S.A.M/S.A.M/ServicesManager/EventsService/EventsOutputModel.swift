@@ -19,7 +19,12 @@ struct EventsOutputModel: Codable {
 // MARK: - EventsDataClass
 struct EventsDataClass: Codable {
     let offset, limit, total, count: Int
-    let results: [EventsResult]
+    let eventsList: [EventsResult]
+    
+    enum CodingKeys: String, CodingKey {
+        case offset, limit, total, count
+        case eventsList = "results"
+    }
 }
 
 // MARK: - EventsResult
@@ -28,20 +33,20 @@ struct EventsResult: Codable {
     let title, resultDescription: String
     let resourceURI: String
     let urls: [URLElement]
-    let modified: Date
-    let start, end: String
+    let modified: String
+    let start, end: String?
     let thumbnail: Thumbnail
     let creators: Creators
     let characters: Characters
     let stories: Stories
     let comics: Comics
     let series: Series
-    let next: Next
-    let previous: Previous
+    let next: Next?
+    let previous: Previous?
 
     enum CodingKeys: String, CodingKey {
         case id, title
-        case resultDescription
+        case resultDescription = "description"
         case resourceURI, urls, modified, start, end, thumbnail, creators, characters, stories, comics, series, next, previous
     }
 }

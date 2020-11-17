@@ -7,25 +7,51 @@
 //
 
 import Foundation
+import RxSwift
 
 class StoriesService {
+    
+    static let sharedInstance = StoriesService()
+    
+    public var storiesList: [StoriesResult] = []
+    private var storyModel : StoriesOutputModel?
+    
     //MARK: - /stories
     /// Obtain stories list
-    func getStoriesList(inputModel: StoriesInputModel?) {
-        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
-                                        url: APIConstants.Endpoints.Stories.storiesList) {
-            dataResponse in
-            do {
-                let decoder = JSONDecoder()
-                let storiesList = try decoder.decode(StoriesOutputModel.self, from: dataResponse)
-
-                print(storiesList)
-            } catch let error {
-                print("Error message: " + error.localizedDescription)
+    func getStoriesList(inputModel: StoriesInputModel?, moreData: Bool) -> Observable<StoriesOutputModel> {
+        
+        Observable.create { observer in
+            
+            if self.storiesList.count > 0 && !moreData{
+                if let storyModel = self.storyModel {
+                    observer.onNext(storyModel)
+                } else {
+                    print("Error with character model")
+                }
+            } else {
+                BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
+                                                url: APIConstants.Endpoints.Stories.storiesList) {
+                    dataResponse in
+                    do {
+                        let decoder = JSONDecoder()
+                        self.storyModel = try decoder.decode(StoriesOutputModel.self, from: dataResponse)
+                        
+                        guard let storyModel = self.storyModel else { return }
+                        self.storiesList.append(contentsOf: storyModel.data.storiesList)
+                        observer.onNext(storyModel)
+                    } catch let error {
+                        observer.onError(error)
+                        print("Error message: " + error.localizedDescription)
+                    }
+                    
+                    observer.onCompleted()
+                } failure: { (error) in
+                    print(error)
+                }
             }
-        } failure: { (error) in
-            print(error)
+            return Disposables.create {}
         }
+        
     }
     
     //MARK: - /stories/{storyId}

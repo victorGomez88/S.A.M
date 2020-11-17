@@ -1,21 +1,20 @@
 //
-//  LoaderViewController.swift
+//  LoaderView.swift
 //  S.A.M
 //
-//  Created by Victor Gomez on 15/11/2020.
+//  Created by Victor Gomez on 16/11/2020.
 //  Copyright © 2020 Victor Gomez. All rights reserved.
 //
 
 import UIKit
 
-class LoaderViewController: UIViewController {
+class LoaderView: UIView {
 
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var loaderImageView: UIImageView!
+    @IBOutlet weak var backgroundView: UIView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    
+    override func awakeFromNib() {
         backgroundView.alpha = 0.2
 
         var imageArray = [UIImage]()
@@ -29,16 +28,14 @@ class LoaderViewController: UIViewController {
         loaderImageView.animationDuration = 1.5
         loaderImageView.animationRepeatCount = 0
         loaderImageView.image = loaderImageView.animationImages?.first
-        
     }
     
     func startLoader() {
-        loaderImageView.startAnimating()
+        loaderImageView?.startAnimating()
     }
     
     func stopLoader() {
-        loaderImageView.stopAnimating()
+        loaderImageView?.stopAnimating()
     }
-
 
 }

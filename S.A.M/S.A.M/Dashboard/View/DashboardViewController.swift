@@ -14,9 +14,6 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var headerTitle: UILabel!
     @IBOutlet weak var topHeaderTitle: NSLayoutConstraint!
     
-    
-    @IBOutlet weak var btnMenu: UIButton!
-    
     @IBOutlet weak var viewScrollContainer: UIView!
     
     //Characters
@@ -31,12 +28,24 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var viewContainerEvents: UIView!
     @IBOutlet weak var btnEvents: UIButton!
     
+    //Creators
+    @IBOutlet weak var viewContainerCreators: UIView!
+    @IBOutlet weak var btnCreators: UIButton!
+    
+    //Series
+    @IBOutlet weak var viewContainerSeries: UIView!
+    @IBOutlet weak var btnSeries: UIButton!
+    
+    //Stories
+    @IBOutlet weak var viewContainerStories: UIView!
+    @IBOutlet weak var btnStories: UIButton!
+    
+    
     private var router = DashboardRouter()
     private var viewModel = DashboardViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         animatedTitleAndVisibleView()
         
         viewModel.bind(view: self, router: router)
@@ -44,7 +53,14 @@ class DashboardViewController: UIViewController {
         applyShadowAndCorner(to: viewContainerCharacters)
         applyShadowAndCorner(to: viewContainerComics)
         applyShadowAndCorner(to: viewContainerEvents)
+        applyShadowAndCorner(to: viewContainerCreators)
+        applyShadowAndCorner(to: viewContainerSeries)
+        applyShadowAndCorner(to: viewContainerStories)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     
@@ -52,19 +68,32 @@ class DashboardViewController: UIViewController {
     
     @IBAction func btnActionCharacters(_ sender: Any) {
         //Navigate to Table Characters list
+        router.navigateToItemsList(with: .Characters)
     }
     
     @IBAction func btnActionComics(_ sender: Any) {
         //Navigate to Table Comics list
+        router.navigateToItemsList(with: .Comics)
     }
     
     @IBAction func btnActionEvents(_ sender: Any) {
         //Navigate to Table Events list
+        router.navigateToItemsList(with: .Events)
     }
     
+    @IBAction func btnActionCreators(_ sender: Any) {
+        //Navigate to Table Creators list
+        router.navigateToItemsList(with: .Creators)
+    }
     
-    @IBAction func btnActionMenu(_ sender: Any) {
-        //Open menu with the rest of options
+    @IBAction func btnActionSeries(_ sender: Any) {
+        //Navigate to Table Series list
+        router.navigateToItemsList(with: .Series)
+    }
+    
+    @IBAction func btnActionStories(_ sender: Any) {
+        //Navigate to Table Stories list
+        router.navigateToItemsList(with: .Stories)
     }
     
     private func applyShadowAndCorner(to view: UIView) {
@@ -81,7 +110,6 @@ class DashboardViewController: UIViewController {
     private func animatedTitleAndVisibleView() {
         
         self.viewScrollContainer.alpha = 0
-        self.btnMenu.alpha = 0
         self.topHeaderTitle.constant = 200
         
         UIView.animate(withDuration: 1, delay: 0.5) {
@@ -89,7 +117,6 @@ class DashboardViewController: UIViewController {
             self.view.layoutIfNeeded()
         } completion: { completed in
             UIView.animate(withDuration: 0.5) {
-                self.btnMenu.alpha = 1
                 self.viewScrollContainer.alpha = 1
                 self.view.layoutIfNeeded()
             }

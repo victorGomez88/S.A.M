@@ -15,7 +15,7 @@ class DashboardRouter {
         return createViewController()
     }
     
-    private var sourceView: UIViewController?
+    private var dashboardView: UIViewController?
     
     private func createViewController() -> UIViewController {
         let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
@@ -23,9 +23,14 @@ class DashboardRouter {
         
         return vc
     }
-    
-    func setSourceView(_ sourceView: UIViewController?) {
+  
+    func setDashboardView(_ sourceView: UIViewController?) {
         guard let view = sourceView else { return }
-        self.sourceView = view
+        self.dashboardView = view
+    }
+    
+    func navigateToItemsList(with itemType: APIConstants.ItemsType) {
+        let itemsListViewController = ItemsListRouter(itemType: itemType).itemsListViewController
+        dashboardView?.navigationController?.pushViewController(itemsListViewController, animated: true)
     }
 }

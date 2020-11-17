@@ -127,24 +127,14 @@ class ComicsInputModel {
             params.updateValue(ean, forKey: "ean")
         } else if !issn.isEmpty {
             params.updateValue(issn, forKey: "issn")
-        } else if !isbn.isEmpty {
-            params.updateValue(isbn, forKey: "isbn")
-        } else if !isbn.isEmpty {
-            params.updateValue(isbn, forKey: "isbn")
-        } else if !isbn.isEmpty {
-            params.updateValue(isbn, forKey: "isbn")
-        } else if !isbn.isEmpty {
-            params.updateValue(isbn, forKey: "isbn")
-        } else if !isbn.isEmpty {
-            params.updateValue(isbn, forKey: "isbn")
         } else if modifiedSince.isEmpty{
             
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            let date = dateFormatter.date(from:modifiedSince)!
-
-            params.updateValue(date, forKey: "modifiedSince")
+            if let date = dateFormatter.date(from:modifiedSince) {
+                params.updateValue(date, forKey: "modifiedSince")
+            }
         } else if creators.count > 0{
             params.updateValue(creators, forKey: "creators")
         } else if characters.count > 0{
@@ -163,8 +153,8 @@ class ComicsInputModel {
             params.updateValue(orderBy, forKey: "orderBy")
         }
         
-        params.updateValue(noVariants, forKey: "noVariants")
-        params.updateValue(hasDigitalIssue, forKey: "hasDigitalIssue")
+        params.updateValue(String(noVariants), forKey: "noVariants")
+        params.updateValue(String(hasDigitalIssue), forKey: "hasDigitalIssue")
         params.updateValue(limit, forKey: "limit")
         params.updateValue(offset, forKey: "offset")
         

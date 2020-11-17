@@ -7,25 +7,55 @@
 //
 
 import Foundation
+import RxSwift
 
 class EventsService {
+    
+    static let sharedInstance = EventsService()
+    
+    public var eventsList: [EventsResult] = []
+    private var eventModel : EventsOutputModel?
+    
     //MARK: - /events
     /// Obtain events list
-    func getEventsList(inputModel: EventsInputModel?) {
-        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
-                                        url: APIConstants.Endpoints.Events.eventsList) {
-            dataResponse in
-            do {
-                let decoder = JSONDecoder()
-                let eventsList = try decoder.decode(EventsOutputModel.self, from: dataResponse)
-
-                print(eventsList)
-            } catch let error {
-                print("Error message: " + error.localizedDescription)
+    func getEventsList(inputModel: EventsInputModel?, moreData: Bool) -> Observable<EventsOutputModel>{
+        
+        Observable.create { observer in
+            
+            if self.eventsList.count > 0 && !moreData{
+                if let eventModel = self.eventModel {
+                    observer.onNext(eventModel)
+                } else {
+                    print("Error with character model")
+                }
+            } else {
+                
+                BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(),
+                                                url: APIConstants.Endpoints.Events.eventsList) {
+                    dataResponse in
+                    do {
+                        let decoder = JSONDecoder()
+                        self.eventModel = try decoder.decode(EventsOutputModel.self, from: dataResponse)
+                        
+                        guard let eventModel = self.eventModel else { return }
+                        self.eventsList.append(contentsOf: eventModel.data.eventsList)
+                        
+                        observer.onNext(eventModel)
+                    } catch let error {
+                        observer.onError(error)
+                        print("Error message: " + error.localizedDescription)
+                    }
+                    
+                    observer.onCompleted()
+                } failure: { (error) in
+                    print(error)
+                }
+                
             }
-        } failure: { (error) in
-            print(error)
+            
+            return Disposables.create {}
         }
+        
     }
     
     //MARK: - /events/{eventId}

@@ -11,22 +11,48 @@ import RxSwift
 
 class CharacterService {
     
+    static let sharedInstance = CharacterService()
+    
+    public var characterList: [CharactersResult] = []
+    private var characterModel : CharactersOutputModel?
+    
     //MARK: - /characters
     /// Obtain list of characters
-    func getCharactersList(inputModel: CharactersInputModel?) {
+    func getCharactersList(inputModel: CharactersInputModel?, moreData: Bool) -> Observable<CharactersOutputModel>{
         
-        BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(), url: APIConstants.Endpoints.Characters.charactersList) { dataResponse in
-            do {
-                let decoder = JSONDecoder()
-                let characterList = try decoder.decode(CharactersOutputModel.self, from: dataResponse)
-                let listCharacters = characterList.data.characterList
-                
-                print(listCharacters)
-            } catch let error {
-                print("Error message: " + error.localizedDescription)
+        return Observable.create { observer in
+            
+            if self.characterList.count > 0 && !moreData{
+                if let characterModel = self.characterModel {
+                    observer.onNext(characterModel)
+                } else {
+                    print("Error with character model")
+                }
+            } else {
+                BaseServiceManager.doGetRequest(params: inputModel?.obtainParamsDict(), url: APIConstants.Endpoints.Characters.charactersList, success: {
+                    dataResponse in
+                    do {
+                        let decoder = JSONDecoder()
+                        self.characterModel = try decoder.decode(CharactersOutputModel.self, from: dataResponse)
+                        
+                        guard let characterModel = self.characterModel else { return }
+                        self.characterList.append(contentsOf: characterModel.data.characterList)
+                        observer.onNext(characterModel)
+
+                    } catch let error {
+                        observer.onError(error)
+                        print("Error message: " + error.localizedDescription)
+                    }
+                    
+                    observer.onCompleted()
+                }, failure: { error in
+                  print(error)
+                })
             }
             
-        } failure: { error in
+            return Disposables.create {
+                
+            }
             
         }
     }

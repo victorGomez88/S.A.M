@@ -19,7 +19,12 @@ struct CreatorsOutputModel: Codable {
 // MARK: - CreatorsDataClass
 struct CreatorsDataClass: Codable {
     let offset, limit, total, count: Int
-    let results: [CreatorsResult]
+    let creatorsList: [CreatorsResult]
+    
+    enum CodingKeys: String, CodingKey {
+        case offset, limit, total, count
+        case creatorsList = "results"
+    }
 }
 
 // MARK: - CreatorsResult
@@ -27,7 +32,7 @@ struct CreatorsResult: Codable {
     let id: Int
     let firstName, middleName, lastName, suffix: String
     let fullName: String
-    let modified: Date
+    let modified: String
     let thumbnail: Thumbnail
     let resourceURI: String
     let comics, series: Comics

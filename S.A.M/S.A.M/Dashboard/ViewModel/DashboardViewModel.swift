@@ -15,6 +15,6 @@ class DashboardViewModel {
     func bind(view: DashboardViewController, router: DashboardRouter) {
         self.view = view
         self.router = router
-        self.router?.setSourceView(view)
+        self.router?.setDashboardView(view)
     }
 }
