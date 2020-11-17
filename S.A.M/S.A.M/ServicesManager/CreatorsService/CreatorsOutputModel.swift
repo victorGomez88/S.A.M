@@ -38,7 +38,7 @@ struct CreatorsResult: Codable {
     let comics, series: Comics
     let stories: Stories
     let events: Comics
-    let urls: [URLElement]
+    let urls: String
 }
 
 // MARK: - Creators

@@ -1,5 +1,5 @@
 //
-//  EventsListViewModel.swift
+//  ComicsListViewModel.swift
 //  S.A.M
 //
 //  Created by Victor Gomez on 16/11/2020.
@@ -9,24 +9,24 @@
 import Foundation
 import RxSwift
 
-class EventsListViewModel : ItemsListViewModel {
+class ComicsListViewModel : CharactersListViewModel {
     
-    private var eventsService = EventsService.sharedInstance
-    private var events = [EventsResult]()
-    private var eventModel : EventsOutputModel?
+    private var comicsService = ComicsService.sharedInstance
+    private var comics = [ComicsResult]()
+    private var comicModel : ComicsOutputModel?
     private var moreData : Bool = false
     
-    func getEventsListData(with inputModel: EventsInputModel?) -> Observable<EventsOutputModel> {
-        return eventsService.getEventsList(inputModel: inputModel, moreData: moreData)
+    func getComicsListData(with inputModel: ComicsInputModel?) -> Observable<ComicsOutputModel> {
+        return comicsService.getComicsList(inputModel: inputModel, moreData: moreData)
     }
     
     override func getData(with inputModel: Any?, onNextCompletion: (@escaping() -> Void)) {
-        return self.getEventsListData(with: nil)
+        return self.getComicsListData(with: nil)
             .subscribeOn(MainScheduler.instance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (modelData) in
-                self.eventModel = modelData
-                self.events = self.eventsService.eventsList
+                self.comicModel = modelData
+                self.comics = self.comicsService.comicsList
                 onNextCompletion()
             }, onError: { error in
                 print(error.localizedDescription)
@@ -35,14 +35,14 @@ class EventsListViewModel : ItemsListViewModel {
     
     override func getMoreData(onNextCompletion:(@escaping() -> Void)) {
         
-        let inputModel = EventsInputModel.init(offset: (self.eventModel?.data.offset ?? 0) + 20)
+        let inputModel = ComicsInputModel.init(offset: (self.comicModel?.data.offset ?? 0) + 20)
         
-        return self.getEventsListData(with: inputModel)
+        return self.getComicsListData(with: inputModel)
             .subscribeOn(MainScheduler.instance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (modelData) in
-                self.eventModel = modelData
-                self.events = self.eventsService.eventsList
+                self.comicModel = modelData
+                self.comics = self.comicsService.comicsList
                 onNextCompletion()
             }, onError: { error in
                 print(error.localizedDescription)
@@ -51,22 +51,22 @@ class EventsListViewModel : ItemsListViewModel {
     
     override func haveMoreData(index: Int) -> Bool {
         
-        guard let eventModel = self.eventModel else { return false }
+        guard let comicModel = self.comicModel else { return false }
         
-        moreData = eventModel.data.offset < eventModel.data.total
+        moreData = comicModel.data.offset < comicModel.data.total
         
-        return index == eventModel.data.offset + (eventModel.data.count - 1) && index < eventModel.data.total
+        return index == comicModel.data.offset + (comicModel.data.count - 1) && index < comicModel.data.total
     }
     
     override func getCountItems() -> Int {
-        return events.count
+        return comics.count
     }
     
     override func getImageName(index: Int) -> String {
-        return events[index].thumbnail.path + "." + events[index].thumbnail.thumbnailExtension
+        return comics[index].thumbnail.path + "." + comics[index].thumbnail.thumbnailExtension
     }
     
     override func getItemName(index: Int) -> String {
-        return events[index].title
+        return comics[index].title
     }
 }

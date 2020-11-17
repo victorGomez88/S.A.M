@@ -1,5 +1,5 @@
 //
-//  ItemCell.swift
+//  CharacterCell.swift
 //  S.A.M
 //
 //  Created by Victor Gomez on 16/11/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemCell: UITableViewCell {
+class CharacterCell: UITableViewCell {
     
     @IBOutlet weak var imgLeftImage: UIImageView!
     @IBOutlet weak var lblName: UILabel!

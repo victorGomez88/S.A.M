@@ -33,13 +33,13 @@ struct SeriesResult: Codable {
     let title: String
     let resultDescription: String?
     let resourceURI: String
-    let urls: [URLElement]
+    let urls: String
     let startYear, endYear: Int
     let rating, type: String
     let modified: String
     let thumbnail: Thumbnail
     let creators: Creators
-    let characters: Characters
+    let characters: CharactersModel
     let stories: Stories
     let comics: Comics
     let events: Events

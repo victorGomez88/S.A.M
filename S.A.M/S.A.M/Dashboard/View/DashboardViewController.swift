@@ -68,32 +68,32 @@ class DashboardViewController: UIViewController {
     
     @IBAction func btnActionCharacters(_ sender: Any) {
         //Navigate to Table Characters list
-        router.navigateToItemsList(with: .Characters)
+        router.navigateToCharactersList()
     }
     
     @IBAction func btnActionComics(_ sender: Any) {
         //Navigate to Table Comics list
-        router.navigateToItemsList(with: .Comics)
+//        router.navigateToItemsList(with: .Comics)
     }
     
     @IBAction func btnActionEvents(_ sender: Any) {
         //Navigate to Table Events list
-        router.navigateToItemsList(with: .Events)
+//        router.navigateToItemsList(with: .Events)
     }
     
     @IBAction func btnActionCreators(_ sender: Any) {
         //Navigate to Table Creators list
-        router.navigateToItemsList(with: .Creators)
+//        router.navigateToItemsList(with: .Creators)
     }
     
     @IBAction func btnActionSeries(_ sender: Any) {
         //Navigate to Table Series list
-        router.navigateToItemsList(with: .Series)
+//        router.navigateToItemsList(with: .Series)
     }
     
     @IBAction func btnActionStories(_ sender: Any) {
         //Navigate to Table Stories list
-        router.navigateToItemsList(with: .Stories)
+//        router.navigateToItemsList(with: .Stories)
     }
     
     private func applyShadowAndCorner(to view: UIView) {

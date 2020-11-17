@@ -32,12 +32,12 @@ struct EventsResult: Codable {
     let id: Int
     let title, resultDescription: String
     let resourceURI: String
-    let urls: [URLElement]
+    let urls: String
     let modified: String
     let start, end: String?
     let thumbnail: Thumbnail
     let creators: Creators
-    let characters: Characters
+    let characters: CharactersModel
     let stories: Stories
     let comics: Comics
     let series: Series

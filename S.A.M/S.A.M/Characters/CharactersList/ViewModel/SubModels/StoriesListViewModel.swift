@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class StoriesListViewModel : ItemsListViewModel {
+class StoriesListViewModel : CharactersListViewModel {
 
     private var storiesService = StoriesService.sharedInstance
     private var stories = [StoriesResult]()

@@ -39,7 +39,7 @@ struct ComicsResult: Codable {
     let pageCount: Int
     let textObjects: [TextObject]
     let resourceURI: String
-    let urls: [URLElement]
+    let urls: String
     let series: SeriesItem
     let variants: [ComicsItem]
     let collections: [ComicsItem]
@@ -49,7 +49,7 @@ struct ComicsResult: Codable {
     let thumbnail: Thumbnail
     let images: [Thumbnail]
     let creators: Creators
-    let characters: Characters
+    let characters: CharactersModel
     let stories: Stories
     let events: Events
 

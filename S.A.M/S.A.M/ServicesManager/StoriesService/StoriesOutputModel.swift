@@ -36,7 +36,7 @@ struct StoriesResult: Codable {
     let modified: String
     let thumbnail: Thumbnail?
     let creators: Creators
-    let characters: Characters
+    let characters: CharactersModel
     let series: Series
     let comics: Comics
     let events: Events

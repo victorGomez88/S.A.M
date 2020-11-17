@@ -29,8 +29,8 @@ class DashboardRouter {
         self.dashboardView = view
     }
     
-    func navigateToItemsList(with itemType: APIConstants.ItemsType) {
-        let itemsListViewController = ItemsListRouter(itemType: itemType).itemsListViewController
-        dashboardView?.navigationController?.pushViewController(itemsListViewController, animated: true)
+    func navigateToCharactersList() {
+        let charactersListViewController = CharactersListRouter().charactersListViewController
+        dashboardView?.navigationController?.pushViewController(charactersListViewController, animated: true)
     }
 }

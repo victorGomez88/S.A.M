@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Items List View Controller-->
+        <!--Characters List View Controller-->
         <scene sceneID="07N-s4-raQ">
             <objects>
-                <viewController storyboardIdentifier="ItemsListViewControllerId" id="tm0-Dx-oWr" customClass="ItemsListViewController" customModule="S_A_M" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CharactersListViewControllerId" id="tm0-Dx-oWr" customClass="CharactersListViewController" customModule="S_A_M" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZBq-at-Umm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,10 +24,28 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <connections>
-                                            <outlet property="dataSource" destination="tm0-Dx-oWr" id="01u-Ig-Xk8"/>
-                                            <outlet property="delegate" destination="tm0-Dx-oWr" id="38j-AB-Q65"/>
+                                            <outlet property="dataSource" destination="tm0-Dx-oWr" id="Qge-q2-5H5"/>
+                                            <outlet property="delegate" destination="tm0-Dx-oWr" id="Wrv-vu-9ff"/>
                                         </connections>
                                     </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsS-l4-QHa">
+                                        <rect key="frame" x="0.0" y="846" width="414" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1i-kc-Ec7">
+                                                <rect key="frame" x="10" y="10" width="394" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="7Hk-uq-XMl"/>
+                                            <constraint firstAttribute="trailing" secondItem="o1i-kc-Ec7" secondAttribute="trailing" constant="10" id="Dg9-KK-SlK"/>
+                                            <constraint firstItem="o1i-kc-Ec7" firstAttribute="top" secondItem="UsS-l4-QHa" secondAttribute="top" constant="10" id="Xs4-if-WMN"/>
+                                            <constraint firstItem="o1i-kc-Ec7" firstAttribute="leading" secondItem="UsS-l4-QHa" secondAttribute="leading" constant="10" id="b5x-Qw-C57"/>
+                                        </constraints>
+                                    </view>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="p0j-eZ-ebe">
                                         <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                                         <color key="color" red="0.99607843139999996" green="0.027450980390000001" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -39,6 +57,9 @@
                                     <constraint firstItem="1tc-6e-l3X" firstAttribute="leading" secondItem="ctg-sc-Bn1" secondAttribute="leading" id="FwF-2Y-gzs"/>
                                     <constraint firstItem="p0j-eZ-ebe" firstAttribute="centerX" secondItem="ctg-sc-Bn1" secondAttribute="centerX" id="N2h-ey-Oup"/>
                                     <constraint firstItem="1tc-6e-l3X" firstAttribute="top" secondItem="ctg-sc-Bn1" secondAttribute="top" id="Pgp-Gl-yKw"/>
+                                    <constraint firstItem="UsS-l4-QHa" firstAttribute="leading" secondItem="ctg-sc-Bn1" secondAttribute="leading" id="aDH-iS-MI4"/>
+                                    <constraint firstAttribute="trailing" secondItem="UsS-l4-QHa" secondAttribute="trailing" id="dEw-xi-uBb"/>
+                                    <constraint firstAttribute="bottom" secondItem="UsS-l4-QHa" secondAttribute="bottom" id="eE1-ti-q9Z"/>
                                     <constraint firstAttribute="trailing" secondItem="1tc-6e-l3X" secondAttribute="trailing" id="sUS-gk-cUr"/>
                                     <constraint firstAttribute="bottom" secondItem="1tc-6e-l3X" secondAttribute="bottom" id="y7d-Of-smL"/>
                                 </constraints>
@@ -54,8 +75,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityLoader" destination="p0j-eZ-ebe" id="m1Q-9w-DJU"/>
-                        <outlet property="tblItemsListTable" destination="1tc-6e-l3X" id="WUx-y6-4rA"/>
+                        <outlet property="activityLoader" destination="p0j-eZ-ebe" id="QqO-iC-VFp"/>
+                        <outlet property="lblDataProviding" destination="o1i-kc-Ec7" id="msZ-Vi-T90"/>
+                        <outlet property="tblItemsListTable" destination="1tc-6e-l3X" id="BkL-9x-6w8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1b-QG-eug" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
