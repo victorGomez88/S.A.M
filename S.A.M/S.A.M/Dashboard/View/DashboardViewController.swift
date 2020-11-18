@@ -50,6 +50,13 @@ class DashboardViewController: UIViewController {
         
         viewModel.bind(view: self, router: router)
         
+        btnCharacters.titleLabel?.text = NSLocalizedString("Characters", comment: "Characters")
+        btnComics.titleLabel?.text = NSLocalizedString("Comics", comment: "Comics")
+        btnEvents.titleLabel?.text = NSLocalizedString("Events", comment: "Events")
+        btnCreators.titleLabel?.text = NSLocalizedString("Creators", comment: "Creators")
+        btnSeries.titleLabel?.text = NSLocalizedString("Series", comment: "Series")
+        btnStories.titleLabel?.text = NSLocalizedString("Stories", comment: "Stories")
+        
         applyShadowAndCorner(to: viewContainerCharacters)
         applyShadowAndCorner(to: viewContainerComics)
         applyShadowAndCorner(to: viewContainerEvents)

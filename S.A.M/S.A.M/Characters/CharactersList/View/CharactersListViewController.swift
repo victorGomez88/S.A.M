@@ -22,6 +22,7 @@ class CharactersListViewController: UIViewController {
     private var viewModel = CharactersListViewModel()
     private var searchController: UISearchController?
     private var searchingResults: Bool = false
+    private var searchedText : String?
     
     public var disposeBag = DisposeBag()
     private var charactersModel : CharactersModel?
@@ -29,11 +30,17 @@ class CharactersListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //NavBarSettings
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = false
+        self.title = NSLocalizedString("Characters", comment: "Characters")
         
         tblItemsListTable.register(UINib(nibName: "CharacterCell", bundle: Bundle.main), forCellReuseIdentifier: "CharacterCell")
         tblItemsListTable.rowHeight = UITableView.automaticDimension
-        
+        tblItemsListTable.separatorStyle = .none
+    
         viewModel.bind(view: self, router: router)
         
         getData(inputModel: nil)
@@ -53,12 +60,16 @@ class CharactersListViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (modelData) in
                 self.charactersModel = modelData
+                
                 if fromSearch ?? false {
                     self.charactersList = modelData.data.charactersList
                 } else {
                     self.charactersList.append(contentsOf: modelData.data.charactersList)
                 }
                 self.reloadTableView()
+                
+                self.showEmptyTableView(show: self.charactersList.isEmpty)
+                self.tblItemsListTable.isScrollEnabled = !self.charactersList.isEmpty
                 
                 self.lblDataProviding.text = self.charactersModel?.attributionText
                 
@@ -95,14 +106,25 @@ class CharactersListViewController: UIViewController {
         searchController = UISearchController(searchResultsController: nil)
         searchController?.obscuresBackgroundDuringPresentation = self.traitCollection.userInterfaceStyle == .dark
         searchController?.searchBar.sizeToFit()
+        searchController?.hidesNavigationBarDuringPresentation = false
         searchController?.searchBar.barStyle = self.traitCollection.userInterfaceStyle == .dark ? .black : .default
         searchController?.searchBar.backgroundColor = .clear
-        searchController?.searchBar.placeholder = "Search..."
+        searchController?.searchBar.placeholder = NSLocalizedString("CharactersSearchPlaceholder", comment: "CharactersSearchPlaceholder")
         
         let searchBar = searchController?.searchBar
         searchBar?.delegate = self
         tblItemsListTable.tableHeaderView = searchBar
-        tblItemsListTable.contentOffset = CGPoint(x: 0, y: searchBar?.frame.size.height ?? 0)
+    }
+    
+    
+    private func showEmptyTableView(show: Bool) {
+        if show {
+            let emptyView = TableEmptyView(frame: tblItemsListTable.backgroundView?.frame ?? CGRect())
+            emptyView.setEmptyMessage(message: NSLocalizedString("CharactersEmptyTableMessage", comment: "CharactersEmptyTableMessage"))
+            tblItemsListTable.backgroundView = emptyView
+        } else {
+            tblItemsListTable.backgroundView = nil
+        }
     }
 }
 
@@ -131,10 +153,13 @@ extension CharactersListViewController: UITableViewDataSource {
         
         cell.lblName.text = charactersList[indexPath.row].name
         
-        if let charactersModel = charactersModel, indexPath.row == charactersModel.data.offset + (charactersModel.data.count - 1) && indexPath.row < charactersModel.data.total && !searchingResults {
+        if let charactersModel = charactersModel, indexPath.row == charactersModel.data.offset + (charactersModel.data.count - 1) && indexPath.row < charactersModel.data.total{
             
-            self.getData(inputModel: CharactersInputModel.init(offset: (charactersModel.data.offset ) + 20))
-            
+            if let text = searchedText {
+                self.getData(inputModel: CharactersInputModel.init(nameStartsWith: text, offset: (charactersModel.data.offset ) + 20))
+            } else {
+                self.getData(inputModel: CharactersInputModel.init(offset: (charactersModel.data.offset ) + 20))
+            }
         }
         
         return cell
@@ -146,12 +171,16 @@ extension CharactersListViewController: UITableViewDataSource {
 extension CharactersListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        stopAndLoad(isLoaded: false)
+        searchedText = searchBar.text
         
-        searchingResults = true
+        self.getData(inputModel: CharactersInputModel.init(nameStartsWith: searchedText), fromSearch: true)
+        searchController?.isActive = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         stopAndLoad(isLoaded: false)
         
-        self.getData(inputModel: CharactersInputModel.init(nameStartsWith: searchBar.text), fromSearch: searchingResults)
-        searchController?.isActive = false
-        
+        self.getData(inputModel: nil, fromSearch: true)
     }
 }
