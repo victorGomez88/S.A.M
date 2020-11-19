@@ -12,18 +12,24 @@ import RxSwift
 class CharactersListViewModel {
     
     private weak var view: CharactersListViewController?
-    private var router: CharactersListRouter?
-    public var disposeBag = DisposeBag()
 
-    func bind(view: CharactersListViewController, router: CharactersListRouter) {
+    func bind(view: CharactersListViewController) {
         self.view = view
-        self.router = router
     }
     
     func getCharactersListData(_ inputModel: CharactersInputModel?) -> Observable<CharactersModel> {
         return CharacterService.sharedInstance.getCharactersList(inputModel: inputModel)
     }
     
+    func navigateToDetail(with characterId: Int) {
+        let storyboard = UIStoryboard(name: "CharacterDetail", bundle: nil)
+        let vc : CharacterDetailViewController = storyboard.instantiateViewController(withIdentifier: "CharacterDetailViewControllerId") as! CharacterDetailViewController
+        vc.characterId = characterId
+        view?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    /**************************DELETE**************************/
     func getData(with inputModel: Any?, onNextCompletion:(@escaping() -> Void)) {
     }
     
@@ -47,5 +53,5 @@ class CharactersListViewModel {
     func getImageName(index: Int) -> String {
         return ""
     }
-   
+    /**************************DELETE**************************/
 }

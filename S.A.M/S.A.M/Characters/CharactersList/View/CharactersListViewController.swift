@@ -18,13 +18,12 @@ class CharactersListViewController: UIViewController {
     
     @IBOutlet weak var lblDataProviding: UILabel!
     
-    private var router = CharactersListRouter()
     private var viewModel = CharactersListViewModel()
     private var searchController: UISearchController?
     private var searchingResults: Bool = false
     private var searchedText : String?
     
-    public var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     private var charactersModel : CharactersModel?
     private var charactersList = [CharacterModel]()
     
@@ -41,17 +40,13 @@ class CharactersListViewController: UIViewController {
         tblItemsListTable.rowHeight = UITableView.automaticDimension
         tblItemsListTable.separatorStyle = .none
     
-        viewModel.bind(view: self, router: router)
+        viewModel.bind(view: self)
         
         getData(inputModel: nil)
         
         searchBarManager()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
+
     private func getData(inputModel: CharactersInputModel?, fromSearch: Bool? = false) {
         stopAndLoad(isLoaded: false)
         
@@ -163,6 +158,10 @@ extension CharactersListViewController: UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.navigateToDetail(with: charactersList[indexPath.row].id)
     }
     
 }

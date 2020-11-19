@@ -46,6 +46,9 @@ class DashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         animatedTitleAndVisibleView()
         
         viewModel.bind(view: self, router: router)

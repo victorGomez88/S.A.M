@@ -10,10 +10,10 @@ import Foundation
 
 struct CharactersModel: Codable {
     var attributionText : String
-    var data : DataItem
+    var data : CharacterDataItem
 }
 
-struct DataItem: Codable {
+struct CharacterDataItem: Codable {
     var charactersList : [CharacterModel]
     var offset: Int
     var limit: Int
@@ -29,7 +29,7 @@ struct DataItem: Codable {
 struct CharacterModel: Codable {
     let id: Int
     let name: String
-    let imageURL: Thumbnail
+    let imageURL: CharacterThumbnail
     
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -38,7 +38,7 @@ struct CharacterModel: Codable {
 }
 
 // MARK: - Thumbnail
-struct Thumbnail: Codable {
+struct CharacterThumbnail: Codable {
     let path: String
     let thumbnailExtension: String
 

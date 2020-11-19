@@ -10,9 +10,9 @@ import UIKit
 
 class TableEmptyView: UIView {
 
-    @IBOutlet weak var emptyImage: UIImageView!
-    @IBOutlet weak var emptyLabel: UILabel!
-    @IBOutlet var contentView: UIView!
+    @IBOutlet private weak var emptyImage: UIImageView!
+    @IBOutlet private weak var emptyLabel: UILabel!
+    @IBOutlet private var contentView: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,7 +25,6 @@ class TableEmptyView: UIView {
     }
     
     func customInit() {
-        super.awakeFromNib()
         Bundle.main.loadNibNamed("TableEmptyView", owner: self, options: nil)
         self.addSubview(contentView)
         contentView.frame = self.bounds

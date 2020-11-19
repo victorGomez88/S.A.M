@@ -6,8 +6,11 @@
   Copyright © 2020 Victor Gomez. All rights reserved.
 */
 
-//CHARACTERS
+"Details" = "Details";
+"DetailsLink" = "See more info on Marvel.com";
+"ComicsLink" = "%@ comics";
 
+//CHARACTERS
 "Characters" = "Characters";
 "CharactersEmptyTableMessage" = "We're sorry, your hero is not born yet";
 "CharactersSearchPlaceholder" = "Search your hero...";

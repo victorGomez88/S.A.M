@@ -27,6 +27,7 @@ class CharacterService {
                     observer.onNext(charactersModel)
                     
                 } catch let error {
+                    print("Error message: " + error.localizedDescription)
                     observer.onError(error)
                     print("Error message: " + error.localizedDescription)
                 }
@@ -37,7 +38,6 @@ class CharacterService {
             })
             
             return Disposables.create {
-                
             }
         }
         
@@ -48,22 +48,31 @@ class CharacterService {
     //MARK: - /characters/{characterId}
     /// Obtain specific character
     /// - Parameter characterID: desired character id
-    func getCharacter(with characterID: Int) {
+    func getCharacter(with characterID: Int) -> Observable<CharacterDetailModel> {
         
-        BaseServiceManager.doGetRequest(params: nil,
-                                        url: String(format:APIConstants.Endpoints.Characters.character, String(characterID))) {
-            dataResponse in
-            do {
-                let decoder = JSONDecoder()
-                let characterList = try decoder.decode(CharactersModel.self, from: dataResponse)
-                print(characterList)
-            } catch let error {
-                print("Error message: " + error.localizedDescription)
+        Observable.create { observer in
+            
+            BaseServiceManager.doGetRequest(params: nil,
+                                            url: String(format:APIConstants.Endpoints.Characters.character, String(characterID))) {
+                dataResponse in
+                do {
+                    let decoder = JSONDecoder()
+                    let character = try decoder.decode(CharacterDetailModel.self, from: dataResponse)
+                   
+                    observer.onNext(character)
+                } catch let error {
+                    print("Error message: " + error.localizedDescription)
+                    observer.onError(error)
+                }
+                
+            } failure: { (error) in
+                print(error)
             }
             
-        } failure: { (error) in
-            print(error)
+            return Disposables.create {
+            }
         }
+        
     }
     
 }
