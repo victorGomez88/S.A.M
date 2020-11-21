@@ -32,6 +32,10 @@
 		4E86E97225698D1000DF47FC /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86E97125698D1000DF47FC /* EventDetailViewController.swift */; };
 		4E86E97725698D2600DF47FC /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E86E97625698D2600DF47FC /* EventDetail.storyboard */; };
 		4E86E9802569A0D900DF47FC /* UIViewController+Back.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86E97F2569A0D800DF47FC /* UIViewController+Back.swift */; };
+		4E86E98C2569BA6200DF47FC /* CreatorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86E98B2569BA6200DF47FC /* CreatorsModel.swift */; };
+		4E86E9932569BBA300DF47FC /* CreatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86E9912569BBA300DF47FC /* CreatorCell.swift */; };
+		4E86E9942569BBA300DF47FC /* CreatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E86E9922569BBA300DF47FC /* CreatorCell.xib */; };
+		4E86E99D2569BD1B00DF47FC /* CreatorsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86E99C2569BD1B00DF47FC /* CreatorsListViewModel.swift */; };
 		4E9B544225618E8800A194FF /* ComicsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B544125618E8800A194FF /* ComicsInputModel.swift */; };
 		4E9B54662561A30800A194FF /* CreatorsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B54652561A30800A194FF /* CreatorsInputModel.swift */; };
 		4E9B546B2561ACED00A194FF /* EventsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B546A2561ACED00A194FF /* EventsInputModel.swift */; };
@@ -119,6 +123,10 @@
 		4E86E97125698D1000DF47FC /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		4E86E97625698D2600DF47FC /* EventDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
 		4E86E97F2569A0D800DF47FC /* UIViewController+Back.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Back.swift"; sourceTree = "<group>"; };
+		4E86E98B2569BA6200DF47FC /* CreatorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorsModel.swift; sourceTree = "<group>"; };
+		4E86E9912569BBA300DF47FC /* CreatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorCell.swift; sourceTree = "<group>"; };
+		4E86E9922569BBA300DF47FC /* CreatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatorCell.xib; sourceTree = "<group>"; };
+		4E86E99C2569BD1B00DF47FC /* CreatorsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorsListViewModel.swift; sourceTree = "<group>"; };
 		4E9B544125618E8800A194FF /* ComicsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInputModel.swift; sourceTree = "<group>"; };
 		4E9B54652561A30800A194FF /* CreatorsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorsInputModel.swift; sourceTree = "<group>"; };
 		4E9B546A2561ACED00A194FF /* EventsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInputModel.swift; sourceTree = "<group>"; };
@@ -278,6 +286,7 @@
 				4E9B54CA25627F0800A194FF /* CharactersModel */,
 				4E9B55EF25666BA200A194FF /* ComicsModel */,
 				4E86E93E25697F9F00DF47FC /* EventsModel */,
+				4E86E98A2569BA2700DF47FC /* CreatorsModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +297,7 @@
 				4E9B54EE2562C4EB00A194FF /* CharacterCell */,
 				4E9B56122566781100A194FF /* ComicCell */,
 				4E86E947256982FA00DF47FC /* EventCell */,
+				4E86E9902569BB8400DF47FC /* CreatorCell */,
 			);
 			path = CellsByType;
 			sourceTree = "<group>";
@@ -298,6 +308,7 @@
 				4E9B54C825627EF800A194FF /* CharactersListViewModel */,
 				4E9B55ED25666B9000A194FF /* ComicsListViewModel */,
 				4E86E9522569839E00DF47FC /* EventsListViewModel */,
+				4E86E99B2569BCDF00DF47FC /* CreatorsListViewModel */,
 			);
 			path = ViewModelByType;
 			sourceTree = "<group>";
@@ -393,6 +404,31 @@
 				4E86E97F2569A0D800DF47FC /* UIViewController+Back.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4E86E98A2569BA2700DF47FC /* CreatorsModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E86E98B2569BA6200DF47FC /* CreatorsModel.swift */,
+			);
+			path = CreatorsModel;
+			sourceTree = "<group>";
+		};
+		4E86E9902569BB8400DF47FC /* CreatorCell */ = {
+			isa = PBXGroup;
+			children = (
+				4E86E9912569BBA300DF47FC /* CreatorCell.swift */,
+				4E86E9922569BBA300DF47FC /* CreatorCell.xib */,
+			);
+			path = CreatorCell;
+			sourceTree = "<group>";
+		};
+		4E86E99B2569BCDF00DF47FC /* CreatorsListViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E86E99C2569BD1B00DF47FC /* CreatorsListViewModel.swift */,
+			);
+			path = CreatorsListViewModel;
 			sourceTree = "<group>";
 		};
 		4E9B548B2561CABB00A194FF /* Dashboard */ = {
@@ -852,6 +888,7 @@
 				4E86E9082569141F00DF47FC /* ComicDetail.storyboard in Resources */,
 				4E9B54F22562C51000A194FF /* CharacterCell.xib in Resources */,
 				4EEEC373255FE8CF0083ABA3 /* Assets.xcassets in Resources */,
+				4E86E9942569BBA300DF47FC /* CreatorCell.xib in Resources */,
 				4E684D6A2561551700290D67 /* LoaderViewController.xib in Resources */,
 				4E9B5576256530B000A194FF /* Localizable.strings in Resources */,
 				4E86E94B2569831F00DF47FC /* EventCell.xib in Resources */,
@@ -1010,6 +1047,7 @@
 				4E9B54662561A30800A194FF /* CreatorsInputModel.swift in Sources */,
 				4E684D98256173F400290D67 /* SeriesService.swift in Sources */,
 				4E9B55B72565636400A194FF /* CharacterDetailViewController.swift in Sources */,
+				4E86E9932569BBA300DF47FC /* CreatorCell.swift in Sources */,
 				4E9B54F12562C51000A194FF /* CharacterCell.swift in Sources */,
 				4E9B556725652E7F00A194FF /* TableEmptyView.swift in Sources */,
 				4E684D4225612AAD00290D67 /* CharacterService.swift in Sources */,
@@ -1018,10 +1056,12 @@
 				4E9B54872561B01D00A194FF /* StoriesInputModel.swift in Sources */,
 				4E9B54B12562642100A194FF /* DashboardRouter.swift in Sources */,
 				4E9B54C22562662F00A194FF /* DashboardViewModel.swift in Sources */,
+				4E86E99D2569BD1B00DF47FC /* CreatorsListViewModel.swift in Sources */,
 				4E86E90D2569142E00DF47FC /* ComicDetailViewModel.swift in Sources */,
 				4E86E93A25696C5E00DF47FC /* NumberUtil.swift in Sources */,
 				4E9B54D9256283D200A194FF /* CharactersListViewModel.swift in Sources */,
 				4E86E96525698CA200DF47FC /* EventDetailViewModel.swift in Sources */,
+				4E86E98C2569BA6200DF47FC /* CreatorsModel.swift in Sources */,
 				4E9B560E256672AE00A194FF /* ComicsListViewModel.swift in Sources */,
 				4E86E9802569A0D900DF47FC /* UIViewController+Back.swift in Sources */,
 				4E9B55D325656FD100A194FF /* CharacterDetailViewModel.swift in Sources */,

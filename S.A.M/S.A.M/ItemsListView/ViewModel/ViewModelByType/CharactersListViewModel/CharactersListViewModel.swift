@@ -74,7 +74,7 @@ class CharactersListViewModel: ItemsListViewModel {
         
         cell.selectionStyle = .none
         if let url = URL(string: charactersList[index].imageURL.path + "." +  charactersList[index].imageURL.thumbnailExtension) {
-            cell.imgLeftImage.af.setImage(withURL:url)
+            cell.imgLeftImage.af.setImage(withURL:url, placeholderImage: UIImage(named:"placeholder"))
         }
 
         cell.lblName.text = charactersList[index].name

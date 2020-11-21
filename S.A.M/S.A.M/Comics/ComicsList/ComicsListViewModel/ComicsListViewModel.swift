@@ -76,7 +76,7 @@ class ComicsListViewModel : ItemsListViewModel {
         cell.selectionStyle = .none
         
         if let url = URL(string: comicsList[index].imageURL.path + "." +  comicsList[index].imageURL.thumbnailExtension) {
-            cell.comicImage.af.setImage(withURL:url)
+            cell.comicImage.af.setImage(withURL:url, placeholderImage: UIImage(named:"placeholder"))
         }
 
         cell.lblComicName.text = comicsList[index].title

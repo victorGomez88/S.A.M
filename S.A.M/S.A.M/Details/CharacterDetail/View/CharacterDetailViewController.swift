@@ -63,7 +63,7 @@ class CharacterDetailViewController: UIViewController {
         
         //MARK: - Image
         if let url = URL(string: viewModel.obtainImageUrl(character:character)) {
-            characterImageView.af.setImage(withURL:url)
+            characterImageView.af.setImage(withURL:url, placeholderImage: UIImage(named:"placeholder"))
         }
         
         //MARK: - Name

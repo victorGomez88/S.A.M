@@ -65,7 +65,7 @@ class EventDetailViewController: UIViewController {
         
         //MARK: - Image
         if let url = URL(string: event.imageURL.path + "." +  event.imageURL.thumbnailExtension) {
-            imgEventImage.af.setImage(withURL:url)
+            imgEventImage.af.setImage(withURL:url, placeholderImage: UIImage(named:"placeholder"))
         }
         
         //MARK: - Name

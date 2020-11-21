@@ -70,7 +70,7 @@ class ComicDetailViewController: UIViewController {
         
         //MARK: - Image
         if let url = URL(string: viewModel.obtainImageUrl(comic: comic)) {
-            comicImageView.af.setImage(withURL:url)
+            comicImageView.af.setImage(withURL:url, placeholderImage: UIImage(named:"placeholder"))
         }
         
         //MARK: - Name

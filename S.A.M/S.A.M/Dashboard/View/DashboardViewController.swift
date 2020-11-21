@@ -93,7 +93,7 @@ class DashboardViewController: UIViewController {
     
     @IBAction func btnActionCreators(_ sender: Any) {
         //Navigate to Table Creators list
-//        router.navigateToItemsList(with: .Creators)
+        router.navigateToList(with: CreatorsListViewModel())
     }
     
     @IBAction func btnActionSeries(_ sender: Any) {

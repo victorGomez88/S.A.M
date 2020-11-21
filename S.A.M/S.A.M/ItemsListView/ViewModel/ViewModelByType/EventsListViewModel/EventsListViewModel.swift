@@ -74,7 +74,7 @@ class EventsListViewModel: ItemsListViewModel {
         
         cell.selectionStyle = .none
         if let url = URL(string: eventsList[index].imageURL.path + "." +  eventsList[index].imageURL.thumbnailExtension) {
-            cell.leftImageView.af.setImage(withURL:url)
+            cell.leftImageView.af.setImage(withURL:url, placeholderImage: UIImage(named:"placeholder"))
         }
 
         cell.lblTitle.text = eventsList[index].title

@@ -28,10 +28,17 @@ class ItemsListViewModel {
        return nil
     }
     
+    func showWebDetail(with index: Int) {
+      
+    }
+    
     func navigateToDetail(with id: Int) {
-        guard let vc = obtainDetailVC(with: id) else { return }
-        let nc = UINavigationController(rootViewController: vc)
-        view?.present(nc, animated: true, completion: nil)
+        if let vc = obtainDetailVC(with: id) {
+            let nc = UINavigationController(rootViewController: vc)
+            view?.present(nc, animated: true, completion: nil)
+        } else {
+            showWebDetail(with: id)
+        }
     }
     
     //MARK: - TITLE VIEWCONTROLLER
