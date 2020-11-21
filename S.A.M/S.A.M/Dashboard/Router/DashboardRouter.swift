@@ -29,9 +29,13 @@ class DashboardRouter {
         self.dashboardView = view
     }
     
-    func navigateToCharactersList() {
-        let storyboard = UIStoryboard(name: "CharactersList", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CharactersListViewControllerId")
+    //MARK: - Navigations
+    
+    func navigateToList(with viewModel: ItemsListViewModel) {
+        let storyboard = UIStoryboard(name: "ItemsList", bundle: nil)
+        let vc : ItemsListViewController = storyboard.instantiateViewController(withIdentifier: "ItemsListViewControllerId") as! ItemsListViewController
+        vc.viewModel = viewModel
         dashboardView?.navigationController?.pushViewController(vc, animated: true)
     }
+    
 }

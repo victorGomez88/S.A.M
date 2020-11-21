@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,7 +41,6 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vy4-ru-rpS">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -59,7 +59,6 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWn-dh-u0W">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -82,7 +81,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="IoD-Nk-gub" firstAttribute="leading" secondItem="983-RT-gXS" secondAttribute="leading" constant="20" id="2MV-GT-tMw"/>
                                                     <constraint firstAttribute="bottom" secondItem="IoD-Nk-gub" secondAttribute="bottom" id="LSP-PU-8NH"/>
@@ -97,11 +96,10 @@
                                                     <constraint firstAttribute="height" constant="50" id="bTg-fU-wp1"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="983-RT-gXS" secondAttribute="trailing" id="2Ch-NL-XvH"/>
                                             <constraint firstItem="Tkc-GL-WVA" firstAttribute="leading" secondItem="IzX-L4-nB8" secondAttribute="leading" constant="20" id="BdV-gu-3rM"/>
@@ -117,7 +115,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="IzX-L4-nB8" firstAttribute="leading" secondItem="Tf4-Z8-neC" secondAttribute="leading" id="9bo-OV-asX"/>
                                     <constraint firstItem="IzX-L4-nB8" firstAttribute="width" secondItem="Tf4-Z8-neC" secondAttribute="width" id="CFF-J9-1cc"/>
@@ -131,7 +129,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SkE-pf-w7Q"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Tf4-Z8-neC" secondAttribute="bottom" id="GIn-wx-n53"/>
                             <constraint firstItem="Tf4-Z8-neC" firstAttribute="top" secondItem="SkE-pf-w7Q" secondAttribute="top" id="Odz-wa-7md"/>
@@ -154,4 +152,9 @@
             <point key="canvasLocation" x="233.33333333333334" y="102.45535714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

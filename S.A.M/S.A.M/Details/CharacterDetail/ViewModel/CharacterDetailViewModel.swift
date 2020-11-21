@@ -18,6 +18,6 @@ class CharacterDetailViewModel {
     }
     
     func getCharacterData(_ characterId: Int) -> Observable<CharacterDetailModel> {
-        return CharacterService.sharedInstance.getCharacter(with: characterId)
+        return CharacterService().getCharacter(with: characterId)
     }
 }

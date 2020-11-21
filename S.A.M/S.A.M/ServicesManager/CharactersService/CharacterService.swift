@@ -11,8 +11,6 @@ import RxSwift
 
 class CharacterService {
     
-    static let sharedInstance = CharacterService()
-    
     //MARK: - /characters
     /// Obtain list of characters
     func getCharactersList(inputModel: CharactersInputModel?) -> Observable<CharactersModel>{
@@ -29,7 +27,6 @@ class CharacterService {
                 } catch let error {
                     print("Error message: " + error.localizedDescription)
                     observer.onError(error)
-                    print("Error message: " + error.localizedDescription)
                 }
                 
                 observer.onCompleted()

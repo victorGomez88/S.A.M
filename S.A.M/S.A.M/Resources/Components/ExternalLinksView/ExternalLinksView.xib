@@ -74,7 +74,7 @@
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="NI9-AX-CHW" firstAttribute="width" secondItem="7K0-Cs-9ZN" secondAttribute="width" multiplier="1:2" id="H92-h0-3nI"/>
+                                <constraint firstItem="Ptg-Jb-E20" firstAttribute="width" secondItem="NI9-AX-CHW" secondAttribute="width" multiplier="0.995169" id="hB5-eK-ceV"/>
                             </constraints>
                         </stackView>
                     </subviews>

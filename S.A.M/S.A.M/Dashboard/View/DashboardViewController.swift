@@ -78,12 +78,12 @@ class DashboardViewController: UIViewController {
     
     @IBAction func btnActionCharacters(_ sender: Any) {
         //Navigate to Table Characters list
-        router.navigateToCharactersList()
+        router.navigateToList(with: CharactersListViewModel())
     }
     
     @IBAction func btnActionComics(_ sender: Any) {
         //Navigate to Table Comics list
-//        router.navigateToItemsList(with: .Comics)
+        router.navigateToList(with: ComicsListViewModel())
     }
     
     @IBAction func btnActionEvents(_ sender: Any) {
