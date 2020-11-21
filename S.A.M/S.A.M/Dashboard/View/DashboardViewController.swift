@@ -88,7 +88,7 @@ class DashboardViewController: UIViewController {
     
     @IBAction func btnActionEvents(_ sender: Any) {
         //Navigate to Table Events list
-//        router.navigateToItemsList(with: .Events)
+        router.navigateToList(with: EventsListViewModel())
     }
     
     @IBAction func btnActionCreators(_ sender: Any) {

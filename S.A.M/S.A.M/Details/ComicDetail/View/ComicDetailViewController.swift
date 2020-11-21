@@ -43,9 +43,14 @@ class ComicDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = NSLocalizedString("Details", comment: "Details")
+        self.closeButton()
         
         viewModel.bind(view: self)
         getComicData()
+    }
+    
+    override func closeButtonAction(sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     private func getComicData() {

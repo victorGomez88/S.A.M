@@ -20,4 +20,8 @@ class CharacterDetailViewModel {
     func getCharacterData(_ characterId: Int) -> Observable<CharacterDetailModel> {
         return CharacterService().getCharacter(with: characterId)
     }
+    
+    func obtainImageUrl(character: DetailCharacterModel) -> String{
+        return character.imageURL.path + "." +  character.imageURL.thumbnailExtension
+    }
 }

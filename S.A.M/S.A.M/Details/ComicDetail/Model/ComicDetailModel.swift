@@ -64,7 +64,7 @@ struct ComicDetailThumbnail: Codable {
     }
 }
 
-// MARK: - Thumbnail
+// MARK: - Url
 struct ComicUrl: Codable {
     let type: String
     let url: String

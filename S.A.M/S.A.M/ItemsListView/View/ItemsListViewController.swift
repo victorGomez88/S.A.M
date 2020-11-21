@@ -33,6 +33,8 @@ class ItemsListViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
         self.title = viewModel?.obtainTitle()
         
+        self.customBackButton(title: "Dashboard")
+        
         tblItemsTableView.register(UINib(nibName: viewModel?.obtainCellName() ?? "", bundle: Bundle.main), forCellReuseIdentifier: viewModel?.obtainCellName() ?? "")
         tblItemsTableView.rowHeight = UITableView.automaticDimension
         tblItemsTableView.separatorStyle = .none
@@ -42,6 +44,13 @@ class ItemsListViewController: UIViewController {
         getData()
         
         searchBarManager()
+    }
+    
+    override func backButtonAction(sender: UIBarButtonItem) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.popViewController(animated: true)
+  
     }
     
     override func viewWillDisappear(_ animated: Bool) {

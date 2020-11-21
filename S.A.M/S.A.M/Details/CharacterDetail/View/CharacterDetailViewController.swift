@@ -37,9 +37,13 @@ class CharacterDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = NSLocalizedString("Details", comment: "Details")
-        
+        self.closeButton()
         viewModel.bind(view: self)
         getCharacterData()
+    }
+    
+    override func closeButtonAction(sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     private func getCharacterData() {
@@ -57,20 +61,20 @@ class CharacterDetailViewController: UIViewController {
         
         guard let character = characterData.data.characterDetail.first else { return }
         
-        //Image
-        if let url = URL(string: character.imageURL.path + "." +  character.imageURL.thumbnailExtension) {
+        //MARK: - Image
+        if let url = URL(string: viewModel.obtainImageUrl(character:character)) {
             characterImageView.af.setImage(withURL:url)
         }
         
-        //Name
+        //MARK: - Name
         nameViewContainer.isHidden = character.name.isEmpty
         lblNameValue.text = character.name
         
-        //Description
+        //MARK: - Description
         descriptionViewContainer.isHidden = character.characterDescription.isEmpty
         lblDescriptionValue.text = character.characterDescription
         
-        //ExternalLinks
+        //MARK: - ExternalLinks
         character.urls.forEach { url in
             if url.type == "detail" && !url.url.isEmpty {
                 externalLinksView.setLeftLink(with: NSLocalizedString("DetailsLink", comment: "DetailsLink"), urlPath: url.url)
@@ -84,7 +88,7 @@ class CharacterDetailViewController: UIViewController {
         
         externalLinksView.isHidden = externalLinksView.isComponenteHidden()
         
-        //Attributtion
+        //MARK: - Attributtion
         lblAttributionValue.text = characterData.attributionText
     }
 }

@@ -30,7 +30,8 @@ class ItemsListViewModel {
     
     func navigateToDetail(with id: Int) {
         guard let vc = obtainDetailVC(with: id) else { return }
-        view?.navigationController?.pushViewController(vc, animated: true)
+        let nc = UINavigationController(rootViewController: vc)
+        view?.present(nc, animated: true, completion: nil)
     }
     
     //MARK: - TITLE VIEWCONTROLLER
