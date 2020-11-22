@@ -39,7 +39,13 @@ class StoriesListViewModel: ItemsListViewModel {
                 onNext()
 
             }, onError: { error in
-                print(error.localizedDescription)
+                let alert = UIAlertController(title: "Something went wrong", message: error.localizedDescription, preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                    self.view?.navigationController?.popViewController(animated: true)
+                }))
+                
+                self.view?.present(alert, animated: true)
             }).disposed(by: disposeBag)
     
     }

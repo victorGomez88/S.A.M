@@ -11,7 +11,7 @@ import RxSwift
 
 class ItemsListViewModel {
     
-    private weak var view: ItemsListViewController?
+    weak var view: ItemsListViewController?
     var disposeBag = DisposeBag()
     var offset : Int?
     
