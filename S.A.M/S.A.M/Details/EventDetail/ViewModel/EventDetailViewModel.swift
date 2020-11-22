@@ -27,44 +27,18 @@ class EventDetailViewModel {
         return event.imageURL.path + "." +  event.imageURL.thumbnailExtension
     }
     
-    func navigateTo(eventId:Int) {
-        let storyboard = UIStoryboard(name: "EventDetail", bundle: nil)
-        let vc : EventDetailViewController = storyboard.instantiateViewController(withIdentifier: "EventDetailViewControllerId") as! EventDetailViewController
-        vc.eventId = eventId
-    }
-    
-    func navigateToPreviousEvent() {
+    func navigateTo(next: Bool) {
+       
         if ((self.event?.data.eventDetail.first?.next?.resourceURI) != nil) {
             if let view = view, let navController = view.navigationController {
-                UIView.transition(with: navController.view, duration: 0.75, options: .transitionFlipFromLeft) {
+                UIView.transition(with: navController.view, duration: 0.75, options: next ? .transitionFlipFromRight : .transitionFlipFromLeft) {
                     let eventId = String(self.event?.data.eventDetail.first?.previous?.resourceURI.split(separator: "/").last ?? "")
-                    
                     let storyboard = UIStoryboard(name: "EventDetail", bundle: nil)
                     let vc : EventDetailViewController = storyboard.instantiateViewController(withIdentifier: "EventDetailViewControllerId") as! EventDetailViewController
                     vc.eventId = Int(eventId)
-                    
                     navController.pushViewController(vc, animated: true)
                 }
             }
         }
     }
-    
-    func navigateToNextEvent() {
-        
-        if ((self.event?.data.eventDetail.first?.next?.resourceURI) != nil) {
-            if let view = view, let navController = view.navigationController {
-                UIView.transition(with: navController.view, duration: 0.75, options: .transitionFlipFromRight) {
-                    let eventId = String(self.event?.data.eventDetail.first?.next?.resourceURI.split(separator: "/").last ?? "")
-                    
-                    let storyboard = UIStoryboard(name: "EventDetail", bundle: nil)
-                    let vc : EventDetailViewController = storyboard.instantiateViewController(withIdentifier: "EventDetailViewControllerId") as! EventDetailViewController
-                    vc.eventId = Int(eventId)
-                    
-                    navController.pushViewController(vc, animated: true)
-                }
-            }
-        }
-        
-    }
-  
 }

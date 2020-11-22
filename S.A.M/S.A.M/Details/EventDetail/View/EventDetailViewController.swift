@@ -112,11 +112,11 @@ class EventDetailViewController: UIViewController {
     
     
     @IBAction func btnPreviousEventAction(_ sender: Any) {
-        viewModel.navigateToPreviousEvent()
+        viewModel.navigateTo(next: false)
     }
     
     @IBAction func btnNextEventAction(_ sender: Any) {
-        viewModel.navigateToNextEvent()
+        viewModel.navigateTo(next: true)
     }
     
     

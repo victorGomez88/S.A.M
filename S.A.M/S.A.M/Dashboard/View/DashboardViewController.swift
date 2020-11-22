@@ -98,7 +98,7 @@ class DashboardViewController: UIViewController {
     
     @IBAction func btnActionSeries(_ sender: Any) {
         //Navigate to Table Series list
-//        router.navigateToItemsList(with: .Series)
+        router.navigateToList(with: SeriesListViewModel())
     }
     
     @IBAction func btnActionStories(_ sender: Any) {
