@@ -43,7 +43,10 @@ class ItemsListViewController: UIViewController {
         
         getData()
         
-        searchBarManager()
+        if !(viewModel is StoriesListViewModel) {
+            searchBarManager()
+        }
+        
     }
     
     override func backButtonAction(sender: UIBarButtonItem) {

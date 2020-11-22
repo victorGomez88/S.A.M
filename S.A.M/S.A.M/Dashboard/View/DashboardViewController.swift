@@ -103,7 +103,7 @@ class DashboardViewController: UIViewController {
     
     @IBAction func btnActionStories(_ sender: Any) {
         //Navigate to Table Stories list
-//        router.navigateToItemsList(with: .Stories)
+        router.navigateToList(with: StoriesListViewModel())
     }
     
     private func applyShadowAndCorner(to view: UIView) {

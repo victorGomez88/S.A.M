@@ -29,7 +29,7 @@ struct StoriesDataItem: Codable {
 struct StoryModel: Codable {
     let id: Int
     let title: String
-    let imageURL: StoryThumbnail
+    let imageURL: StoryThumbnail?
     
     enum CodingKeys: String, CodingKey {
         case id, title
