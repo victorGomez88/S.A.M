@@ -9,3 +9,29 @@ You will have access to the information about your favourites characters and the
 
 
 **This app is a technical test for Wallapop** 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Future Changes
+
+- Change Dashboard buttons and use CollectionsView of: 
+  - Last Comics
+  - Featured Characters
+  - Featured Events
+- Create a menu with the other options (Series and Creators)
+- Create a Search/Filter with more options
+- Integrate FireBase to use Login and bbdd to create personal list of items (Like Favs, or readed comics)
