@@ -49,7 +49,7 @@ class EventsListViewModel: ItemsListViewModel {
                 let alert = UIAlertController(title: "Something went wrong", message: error.localizedDescription, preferredStyle: .alert)
 
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                    self.view?.navigationController?.popViewController(animated: true)
+                    self.view?.backButtonAction(sender: nil)
                 }))
                 
                 self.view?.present(alert, animated: true)

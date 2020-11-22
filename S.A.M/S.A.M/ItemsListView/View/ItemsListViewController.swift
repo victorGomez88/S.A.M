@@ -49,11 +49,10 @@ class ItemsListViewController: UIViewController {
         
     }
     
-    override func backButtonAction(sender: UIBarButtonItem) {
+    override func backButtonAction(sender: UIBarButtonItem?) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.popViewController(animated: true)
-  
     }
     
     override func viewWillDisappear(_ animated: Bool) {

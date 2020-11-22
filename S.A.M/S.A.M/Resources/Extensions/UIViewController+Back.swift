@@ -25,7 +25,7 @@ extension UIViewController {
         self.navigationItem.rightBarButtonItem = closeButton
     }
     
-    @objc func backButtonAction(sender: UIBarButtonItem) {
+    @objc func backButtonAction(sender: UIBarButtonItem?) {
         
     }
     
