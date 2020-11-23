@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  S.A.M
+
+  Created by Victor Gomez on 18/11/2020.
+  Copyright © 2020 Victor Gomez. All rights reserved.
+*/
+
+"Details" = "Details";
+"DetailsLink" = "See more info on Marvel.com";
+"ComicsLink" = "%@ comics";
+
+//CHARACTERS
+"Characters" = "Characters";
+"CharactersEmptyTableMessage" = "We're sorry, your hero is not born yet";
+"CharactersSearchPlaceholder" = "Search your hero...";
+
+//COMICS
+"Comics" = "Comics";
+"ComicsEmptyTableMessage" = "We're sorry, your comic is not write yet";
+"ComicsSearchPlaceholder" = "Search your comic...";
+
+//CREATORS
+"Creators" = "Creators";
+"CreatorsEmptyTableMessage" = "We're sorry, your creator is not born yet";
+"CreatorsSearchPlaceholder" = "Search your creator...";
+
+//EVENTS
+"Events" = "Events";
+"EventsEmptyTableMessage" = "We're sorry, your event is not happened yet";
+"EventsSearchPlaceholder" = "Search your event...";
+
+//SERIES
+"Series" = "Series";
+"SeriesEmptyTableMessage" = "We're sorry, your serie is not created yet";
+"SeriesSearchPlaceholder" = "Search your serie...";
+
+//STORIES
+"Stories" = "Stories";
+"StoriesEmptyTableMessage" = "We're sorry, your story is not created yet";
+"StoriesSearchPlaceholder" = "Search your story...";

@@ -1,0 +1,6 @@
+framework module Pods_S_A_M_S_A_MUITests {
+  umbrella header "Pods-S.A.M-S.A.MUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
